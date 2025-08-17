@@ -309,11 +309,18 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
 <div class="side right" aria-hidden="true">
   <a href="mailto:eng.almouayad.shwin@gmail.com" style="text-decoration:none">eng.almouayad.shwin@gmail.com</a>
 </div>
-
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top"><span class="brand-badge">AL</span></a>
-    <nav>
+    <!-- اللوغو مزاح لليسار عبر margin-left سالب (عدّل -28px إذا بدك) -->
+    <a class="brand" href="#top" style="margin-left:-200px;">
+      <span class="brand-badge">AL</span>
+    </a>
+
+    <!-- سبايسر ثابت لزيادة الفراغ بين اللوغو والقائمة -->
+    <span aria-hidden="true" style="flex:0 0 550px;"></span>
+
+    <!-- الناف يمين دائماً -->
+    <nav style="margin-left:auto;">
       <ul>
         <li><a href="#about"><span class="num">01.</span>About</a></li>
         <li><a href="#experience"><span class="num">02.</span>Experience</a></li>
@@ -325,6 +332,9 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
     </nav>
   </div>
 </header>
+
+
+
 
 <main id="top">
   <!-- Hero -->
