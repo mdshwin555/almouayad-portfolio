@@ -1,733 +1,554 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>المؤيّد شويّن | بورتفوليو + سيرة ذاتية</title>
-  <meta name="description" content="بورتفوليو تفاعلي وسيرة ذاتية للمؤيّد شويّن — مهندس برمجيات (Laravel, Flutter, React) مع خبرة في الأنظمة المصرفية والـ Microservices وواجهات المستخدم." />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Al-Mouayad Shwin — Portfolio</title>
+<meta name="description" content="Al-Mouayad Shwin — Software Engineer (Laravel, React, Flutter). Portfolio & CV."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Favicon: hexagon with AL -->
+<link rel="icon" type="image/svg+xml"
+href='data:image/svg+xml;utf8,
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <polygon points="50,4 92,28 92,72 50,96 8,72 8,28" fill="none" stroke="%2364ffda" stroke-width="6"/>
+  <text x="50" y="62" text-anchor="middle" font-family="Inter" font-weight="900" font-size="42" fill="%2364ffda">AL</text>
+</svg>'/>
 
-  <style>
-    :root{
-      --bg:#0b0f14; --bg-2:#0e141b; --card:#0f1720cc;
-      --txt:#e6edf3; --muted:#9fb0c1;
-      --brand:#39c0ff; --brand-2:#7afff1; --accent:#9a7bff;
-      --success:#41d19f; --shadow:0 10px 30px rgba(0,0,0,.35);
-      --radius:14px; --radius-lg:18px; --grid-gap:18px; --maxw:1150px;
-      --font:"Cairo", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    }
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f6f9fc; --bg-2:#eef3f8; --card:#ffffffee; --txt:#0f1720; --muted:#506176; --shadow:0 10px 30px rgba(0,0,0,.08); }
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:linear-gradient(160deg,var(--bg),var(--bg-2));color:var(--txt);font-family:var(--font);line-height:1.65;overflow-x:hidden}
+<style>
+:root{
+  --bg:#0a192f; --bg-2:#0b1c36;
+  --text:#ccd6f6; --muted:#8892b0; --muted-2:#a8b2d1;
+  --title:#e6f1ff; --accent:#64ffda; --card:#112240;
+  --shadow:0 10px 30px -10px rgba(2,12,27,.7);
+  --radius:6px; --radius-lg:8px; --w:1100px;
+  --font:"Inter", system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  --mono:"Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:var(--text);font-family:var(--font);line-height:1.7;overflow-x:hidden}
+a{color:inherit}
 
-    canvas#bg{position:fixed;inset:0;z-index:-2;display:block}
-    .fog{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;
-      background:radial-gradient(60vmax 60vmax at 80% 20%, rgba(57,192,255,.09), transparent 60%),
-                 radial-gradient(50vmax 50vmax at 10% 80%, rgba(154,123,255,.08), transparent 60%),
-                 radial-gradient(40vmax 40vmax at 60% 60%, rgba(122,255,241,.07), transparent 60%);
-      filter:blur(40px)}
-    .cursor-dot{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:difference;width:6px;height:6px;border-radius:50%;background:#fff}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 36px}
 
-    .wrap{max-width:var(--maxw);margin-inline:auto;padding:28px}
-    header.nav{position:sticky;top:0;background:linear-gradient(to bottom, rgba(15,23,32,.85), rgba(15,23,32,.35) 60%, transparent);
-      backdrop-filter:saturate(140%) blur(10px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
-    .nav-bar{display:flex;align-items:center;gap:14px;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--txt)}
-    .brand .logo{width:34px;height:34px;border-radius:10px;background:
-      conic-gradient(from 210deg, var(--brand), var(--accent), var(--brand-2), var(--brand));
-      box-shadow:0 6px 20px rgba(57,192,255,.35), inset 0 0 30px rgba(154,123,255,.35)}
-    nav ul{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:0;padding:0}
-    nav a{color:var(--muted);text-decoration:none;font-weight:800}
-    nav a:hover{color:var(--brand)}
-    .pill{background:linear-gradient(135deg, rgba(57,192,255,.15), rgba(154,123,255,.15));padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.08)}
-    .mag{display:inline-grid;place-items:center;transition:transform .15s}
-    .mag:hover{transform:translateY(-1px)}
-    .theme{display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid rgba(255,255,255,.12);padding:8px 12px;cursor:pointer;background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02))}
+/* ---------- Splash ---------- */
+#splash{position:fixed;inset:0;background:#0a192f;display:grid;place-items:center;z-index:9999;transition:opacity .4s ease}
+.hex{width:86px;height:86px}
+.hex svg{width:100%;height:100%}
+.hex .letter{fill:var(--accent)}
+.hex .stroke{stroke:var(--accent);stroke-width:6;fill:none;filter:drop-shadow(0 0 12px rgba(100,255,218,.35));stroke-dasharray:300;stroke-dashoffset:300;animation:dash 1.2s ease forwards .2s}
+@keyframes dash{to{stroke-dashoffset:0}}
 
-    .hero{position:relative;padding:70px 0 40px;min-height:66vh;display:grid;align-items:center}
-    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
-    @media (max-width:950px){.hero-inner{grid-template-columns:1fr}}
-    .tag{display:inline-flex;gap:10px;align-items:center;font-size:.95rem;color:var(--muted);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px}
-    .tag i{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 12px var(--success)}
+/* ---------- Header ---------- */
+header{position:fixed;top:0;left:0;right:0;height:80px;backdrop-filter:blur(8px);
+  background:rgba(10,25,47,.6);border-bottom:1px solid rgba(100,255,218,.08);z-index:50}
+header .wrap{padding:0 28px}
+.nav{height:80px;display:flex;align-items:center;justify-content:space-between;column-gap:48px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-badge{width:36px;height:36px;display:grid;place-items:center;border-radius:6px;border:2px solid var(--accent);color:var(--accent);font-weight:900}
+nav ul{margin:0;padding:0;display:flex;gap:26px;list-style:none;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-weight:800;transition:color .15s ease}
+nav a .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:.08em;color:var(--accent);margin-right:6px}
+/* طلبك: الهوفر يصير أخضر مثل الرقم */
+nav a:hover{color:var(--accent)}
+.btn{border:1px solid var(--accent);color:var(--accent);padding:10px 14px;border-radius:var(--radius);text-decoration:none;font-weight:900;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.resume{margin-left:8px}
 
-    h1{margin:10px 0 6px;line-height:1.15;font-weight:900;font-size:clamp(1.9rem, 3.4vw + 1rem, 3.2rem)}
-    .typewrap{display:inline-flex;align-items:center;gap:8px}
-    .typed{background:linear-gradient(135deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
-    .typed::after{content:"|";margin-inline-start:4px;opacity:.7;animation:blink 1s step-end infinite}
-    @keyframes blink{50%{opacity:.05}}
-    .lead{font-size:1.12rem;color:var(--muted);margin:0 0 16px}
-    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-    .btn{--bgbtn:linear-gradient(135deg,var(--brand),var(--accent));color:#000;background:var(--bgbtn);border:none;border-radius:12px;padding:12px 16px;font-weight:900;cursor:pointer;text-decoration:none;box-shadow:var(--shadow)}
-    .btn.ghost{background:transparent;color:var(--txt);border:1.5px solid rgba(255,255,255,.18)}
+/* ---------- Side rails ---------- */
+.side{position:fixed;bottom:0;left:24px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.side a,.side span{color:var(--muted);transition:transform .15s,color .15s ease;text-decoration:none;display:inline-grid}
+.side a:hover,.side span:hover{color:var(--accent);transform:translateY(-2px)} /* تلوين الانستا والفيس أيضاً */
+.side:after{content:"";width:1px;height:140px;background:var(--muted);opacity:.35;margin-top:10px}
+.side.right{left:auto;right:24px}
+.side.right a{writing-mode:vertical-rl;letter-spacing:1px;text-decoration:none}
+.icon{width:22px;height:22px;color:currentColor;opacity:.95}
+.fake{cursor:default;opacity:.85} /* بدون روابط */
 
-    /* بطاقة الأثر — كبيرة وغنية مع حدود متوهجة */
-    .hero-card{
-      position:relative;
-      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border:1.5px solid rgba(255,255,255,.14);
-      border-radius:22px;padding:18px 18px 16px;box-shadow:var(--shadow);
-      transform-style:preserve-3d;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;
-      overflow:hidden;
-    }
-    .hero-card::before{
-      content:"";position:absolute;inset:-2px;border-radius:inherit;z-index:-1;
-      background:conic-gradient(from 0deg,var(--brand),var(--accent),var(--brand-2),var(--brand));
-      filter:blur(14px) saturate(140%);opacity:.25;animation:spin 9s linear infinite;
-    }
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .hero-card h3{margin:0 0 6px;font-size:1.12rem}
-    .hero-card ul{margin:0 0 10px 1rem;font-size:1.02rem;line-height:1.75}
-    .hero-card .muted{font-size:.98rem}
-    .hero-card li{position:relative}
-    .hero-card li::marker{color:var(--brand)}
-    .hero-card .bar{
-      height:6px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08);
-      box-shadow:inset 0 0 6px rgba(0,0,0,.3);position:relative;margin-top:8px;
-    }
-    .hero-card .bar>i{
-      position:absolute;inset:0 40% 0 0;background:linear-gradient(90deg,var(--brand),var(--accent));animation:swipe 2.2s ease-in-out infinite;
-    }
-    @keyframes swipe{0%{inset:0 85% 0 0}50%{inset:0 15% 0 0}100%{inset:0 85% 0 0}}
+/* ---------- Sections ---------- */
+section{padding:120px 0}
+.sec-title{display:flex;align-items:center;gap:12px;margin:0 0 30px 0}
+.sec-title .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.sec-title h2{margin:0;color:var(--title);font-size:clamp(22px,2.2vw,28px)}
+p{color:var(--muted)}
 
-    section{padding:48px 0}
-    .sec-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}
-    .sec-head h2{margin:0;font-size:1.6rem}
-    .muted{color:var(--muted)}
-    .grid{display:grid;gap:var(--grid-gap)}
-    .grid.cards{grid-template-columns:repeat(12,1fr)}
-    .card{grid-column:span 4;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);transition:transform .18s ease,border-color .2s;transform-style:preserve-3d;text-decoration:none;color:inherit}
-    .card:hover{transform:translateY(-4px)}
-    @media (max-width:980px){.card{grid-column:span 6}}
-    @media (max-width:640px){.card{grid-column:span 12}}
+/* ---------- Hero ---------- */
+.hero{padding-top:110px;padding-bottom:70px}
+.kicker{color:var(--accent);font-weight:900;margin:0 0 12px}
+h1.big{margin:0;color:var(--title);font-size:clamp(32px,6vw,64px);line-height:1.1}
+h2.big{margin:8px 0 14px;color:var(--muted-2);font-size:clamp(28px,5.2vw,56px);line-height:1.1}
+.hero .desc{max-width:740px}
+.hero .cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
 
-    .timeline{position:relative;margin:8px 0 0;padding:8px 0 0}
-    .timeline::before{content:"";position:absolute;inset:0 50% 0 auto;width:2px;background:linear-gradient(var(--brand), transparent 80%);opacity:.6}
-    .exp{position:relative;padding:14px 16px 14px 18px;margin:18px 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px}
-    .exp::before{content:"";position:absolute;right:calc(50% - 6px);top:18px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff, var(--brand));box-shadow:0 0 0 4px rgba(57,192,255,.18)}
-    .exp h3{margin:.2rem 0 .4rem;font-size:1.08rem}
-    .exp .meta{font-weight:800;color:var(--muted);font-size:.98rem;margin-bottom:6px}
-    .exp ul{margin:8px 0 0 1rem}
+/* Say Hello effect */
+.btn-hello{
+  position:relative;display:inline-block;padding:14px 24px;border-radius:8px;
+  color:var(--accent);border:1px solid var(--accent);font-weight:900;text-decoration:none;background:transparent;
+}
+.btn-hello::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent);
+  opacity:.18;transform:translate(8px,8px);z-index:-1;transition:transform .2s ease,opacity .2s ease;
+}
+.btn-hello:hover{color:#0a192f;background:var(--accent)}
+.btn-hello:hover::after{transform:translate(10px,10px);opacity:.26}
 
-    .proj{display:flex;flex-direction:column;gap:10px;overflow:hidden}
-    .thumb{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
-    .thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.03)}
-    .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.25));pointer-events:none}
-    .proj .title{font-weight:900}
-    .tags{display:flex;flex-wrap:wrap;gap:8px}
-    .tag2{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:.92rem;color:var(--muted);background:rgba(255,255,255,.03)}
+/* ---------- About ---------- */
+.about{display:grid;grid-template-columns:3fr 2fr;gap:40px}
+@media (max-width:980px){.about{grid-template-columns:1fr}}
+.list{display:grid;grid-template-columns:repeat(2,minmax(140px,1fr));gap:6px 18px;margin-top:12px}
+.list li{list-style:none;position:relative;padding-left:18px;color:var(--muted)}
+.list li:before{content:"▹";position:absolute;left:0;color:var(--accent);font-weight:900}
 
-    .skills{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gap)}
-    .skill-col{grid-column:span 4;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px}
-    @media (max-width:980px){.skill-col{grid-column:span 6}}
-    @media (max-width:640px){.skill-col{grid-column:span 12}}
-    .skill-col h3{margin:.4rem 0 1rem;font-size:1.06rem}
-    .skill-list{display:flex;flex-wrap:wrap;gap:10px}
-    .skill{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-weight:800}
-    .skill i{width:20px;height:20px;border-radius:6px;display:inline-grid;place-items:center;background:linear-gradient(135deg, rgba(57,192,255,.25), rgba(154,123,255,.25));font-style:normal;font-size:13px;line-height:1}
+/* Photo */
+.photo{position:relative;max-width:360px;margin:0 auto;border-radius:8px}
+.photo img{display:block;width:100%;border-radius:8px}
+.photo::before{content:"";position:absolute;inset:0;border-radius:8px;background:var(--accent);opacity:0;mix-blend-mode:multiply;transition:opacity .25s ease}
+.photo::after{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px solid var(--accent);border-radius:8px;transition:transform .25s ease}
+.photo:hover::before{opacity:.18}
+.photo:hover::after{transform:translate(2px,2px)}
 
-    form.contact{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    form.contact .full{grid-column:1/-1}
-    input,textarea{width:100%;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--txt);outline:none;font-family:var(--font)}
-    textarea{min-height:140px;resize:vertical}
-    input:focus,textarea:focus{border-color:var(--brand)}
-    footer{padding:36px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,.08)}
-    .reveal{opacity:0;transform:translateY(14px) scale(.98);transition:opacity .6s ease, transform .6s ease}
-    .reveal.show{opacity:1;transform:none}
+/* ---------- Experience ---------- */
+.tabs{display:grid;grid-template-columns:220px 1fr;gap:24px}
+@media (max-width:880px){.tabs{grid-template-columns:1fr}}
+.tablist{display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.08)}
+.tablist button{all:unset;cursor:pointer;padding:12px 16px;border-left:2px solid transparent;color:var(--muted);font-weight:800}
+.tablist button.active{border-color:var(--accent);color:var(--accent);background:rgba(100,255,218,.08)}
+.panel{display:none}
+.panel.active{display:block}
+.panel h3{margin:0 0 6px}
+.panel .meta{color:var(--muted)}
+.panel ul{margin:12px 0 0 0;padding:0}
+.panel li{list-style:none;position:relative;padding-left:18px;margin:10px 0;color:var(--muted)}
+.panel li:before{content:"▹";position:absolute;left:0;color:var(--accent);font-weight:900}
 
-    /* شريط الإحصاءات — ألوان داكنة متناغمة مع الثيم */
-    .stats{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .stat-card{
-      grid-column:span 4;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      color:var(--txt);
-      border-radius:20px;
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow:var(--shadow);
-      padding:16px 18px;
-      display:flex;align-items:center;gap:14px;
-      position:relative;overflow:hidden;
-    }
-    .stat-card::after{
-      content:"";position:absolute;inset:auto -30% -60% -30%;
-      height:140%;background:radial-gradient(closest-side, rgba(57,192,255,.12), transparent 70%);
-      filter:blur(22px);
-    }
-    @media (max-width:980px){.stat-card{grid-column:span 6}}
-    @media (max-width:640px){.stat-card{grid-column:span 12}}
+/* ---------- Work (featured projects) ---------- */
+#work{padding-top:160px}
+.featured{display:grid;gap:120px}
+.proj{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr)); /* يمنع الانكسار ويضمن التراكب */
+  gap:10px;align-items:center;position:relative
+}
+.proj .thumb{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.06);z-index:1}
+.proj .thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s ease, filter .4s ease}
+.proj .thumb:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(100,255,218,.15), rgba(100,255,218,0));mix-blend-mode:screen;opacity:.0;transition:opacity .3s}
+.proj .thumb:hover img{transform:scale(1.04);filter:saturate(1.15) contrast(1.05)}
+.proj .thumb:hover:before{opacity:.9}
 
-    .ring{position:relative;width:92px;height:92px;display:grid;place-items:center;flex:0 0 auto}
-    .ring svg{width:92px;height:92px;transform:rotate(-90deg)}
-    .ring .track{stroke:rgba(255,255,255,.18);stroke-width:12;fill:none}
-    .ring .prog{stroke:var(--brand);stroke-width:12;fill:none;stroke-linecap:round;stroke-dasharray:0 999;filter:drop-shadow(0 0 6px rgba(57,192,255,.45))}
-    .num{position:absolute;font-weight:900;font-size:20px;color:var(--txt);text-shadow:0 0 8px rgba(0,0,0,.35)}
-    .num small{font-weight:900;color:var(--txt)}
-    .stat-body{display:flex;flex-direction:column;gap:4px}
-    .stat-title{font-weight:900}
-    .stat-note{color:var(--muted);font-weight:800;font-size:.95rem}
+/* Content */
+.content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:8px}
+.content .eyebrow{color:var(--accent);font-weight:900;margin:0}
+.content h3{margin:0 0 4px;color:var(--title)}
+.content .card{
+  background:rgba(17,34,64,.92);
+  border-radius:var(--radius);
+  padding:20px 22px;
+  border:1px solid rgba(255,255,255,.08);
+  color:var(--muted);
+  box-shadow:var(--shadow);
+  backdrop-filter:saturate(1.1);
+  max-width:540px;
+}
+.tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.tech span{color:var(--muted);font-weight:800}
 
-    /* آراء العملاء */
-    .t-wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .t-card{grid-column:span 4;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
-    @media (max-width:980px){.t-card{grid-column:span 6}}
-    @media (max-width:640px){.t-card{grid-column:span 12}}
-    .t-card::after{content:"";position:absolute;inset:-60% -40% auto -40%;height:60%;background:radial-gradient(closest-side, rgba(122,255,241,.16), transparent 70%);filter:blur(18px);animation:float 9s ease-in-out infinite}
-    @keyframes float{0%,100%{transform:translateY(-10px)}50%{transform:translateY(10px)}}
-    .t-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-    .avatar{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:linear-gradient(135deg,var(--brand),var(--accent))}
-    .star{display:inline-flex}
-    .star svg{width:16px;height:16px;color:#ffd166}
-  </style>
+/* توزيع الأعمدة + الطفو فوق الصورة (معكوسين تماماً) */
+.proj:nth-child(odd) .content{grid-column:1/7;justify-self:start;text-align:left}
+.proj:nth-child(odd) .thumb{grid-column:6/13;justify-self:end}
+.proj:nth-child(odd) .content .card{margin-right:-200px}  /* يطفو يمين فوق الصورة */
+
+.proj:nth-child(even) .thumb{grid-column:1/9}
+.proj:nth-child(even) .content{grid-column:9/13;justify-self:end;text-align:right}
+.proj:nth-child(even) .content .card{margin-left:-200px}   /* يطفو يسار فوق الصورة */
+
+@media (max-width:980px){
+  .proj{grid-template-columns:1fr}
+  .proj .thumb,.proj .content{grid-column:1/-1}
+  .content{text-align:left}
+  .content .card{margin:10px 0 0 0;max-width:none}
+}
+
+/* ---------- Testimonials ---------- */
+#testimonials{padding-top:180px}
+.grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:980px){.grid-cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.grid-cards{grid-template-columns:1fr}}
+.t-card{
+  background:var(--card);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+  position:relative;transition:transform .18s ease, box-shadow .18s ease
+}
+/* طلبك: تأثير خفيف يرتفع */
+.t-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px -10px rgba(2,12,27,.85)}
+.t-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--accent);color:var(--accent);font-weight:900}
+.t-role{color:var(--muted);font-weight:800;margin-top:-3px}
+.stars{color:#ffd166}
+
+/* ---------- Contact ---------- */
+#contact{padding-top:180px}
+.cta-center{text-align:center;max-width:none;margin:0 auto}
+.cta-center .kicker{margin-bottom:6px}
+.cta-center h2{font-size:clamp(26px,4.4vw,40px);color:var(--title);margin:0 0 12px}
+.cta-center > p{max-width:820px;margin:0 auto}
+form.contact{margin-top:30px;display:grid;gap:12px;grid-template-columns:1fr 1fr}
+form.contact .full{grid-column:1/-1}
+input,textarea{background:#0c2244;border:1px solid rgba(255,255,255,.1);color:var(--text);border-radius:var(--radius);padding:12px 14px;outline:none}
+input:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:160px;resize:vertical}
+
+/* Send button */
+.btn-accent{
+  position:relative;justify-self:center;margin-top:8px;background:transparent;border:1px solid var(--accent);
+  color:var(--accent);padding:12px 22px;border-radius:8px;font-weight:900;cursor:pointer;grid-column:1/-1
+}
+.btn-accent::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent);
+  opacity:.18;transform:translate(8px,8px);z-index:-1;transition:transform .2s ease,opacity .2s ease
+}
+.btn-accent:hover{color:#0a192f;background:var(--accent)}
+.btn-accent:hover::after{transform:translate(10px,10px);opacity:.26}
+
+#formMsg{min-height:22px}
+.success{color:var(--accent);font-weight:900}
+
+/* ---------- Footer ---------- */
+footer{padding:36px 0;text-align:center;color:var(--muted)}
+</style>
 </head>
 <body>
-  <canvas id="bg"></canvas>
-  <div class="fog" aria-hidden="true"></div>
-  <div class="cursor-dot" id="cDot"></div>
 
-  <header class="nav">
-    <div class="wrap nav-bar">
-      <a class="brand" href="#home" aria-label="الانتقال للبداية">
-        <div class="logo" aria-hidden="true"></div>
-        <b>المؤيّد شويّن</b>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="#about">نبذة</a></li>
-          <li><a href="#experience">خبرة</a></li>
-          <li><a href="#projects">مشاريع</a></li>
-          <li><a href="#skills">مهارات</a></li>
-          <li><a href="#education">تعليم</a></li>
-          <li><a href="#contact" class="pill mag">تواصل</a></li>
-        </ul>
-      </nav>
-      <button class="theme" id="themeBtn" title="تبديل النمط">
-        <span>النمط</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0 0 18c4.97 0 9-4.03 9-9 0-3.87-2.45-7.16-5.86-8.4A7 7 0 0 1 12 20a7 7 0 0 1 0-14z"/></svg>
-      </button>
+<!-- Splash with AL -->
+<div id="splash" aria-hidden="true">
+  <div class="hex" aria-label="AL">
+    <svg viewBox="0 0 100 100">
+      <polygon class="stroke" points="50,4 92,28 92,72 50,96 8,72 8,28"/>
+      <text x="50" y="60" text-anchor="middle" class="letter" style="font: 900 42px var(--font)">AL</text>
+    </svg>
+  </div>
+</div>
+
+<!-- Rails -->
+<div class="side" aria-hidden="true">
+  <!-- GitHub (Clickable) -->
+  <a href="https://github.com/mdshwin555" target="_blank" rel="noopener" title="GitHub">
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.35.73-4.05-1.61-4.05-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.1-.76.08-.75.08-.75 1.21.09 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.67-.3-5.48-1.33-5.48-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.82 5.62-5.5 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.58A12 12 0 0 0 12 .5Z"/></svg>
+  </a>
+  <!-- LinkedIn (Clickable) -->
+  <a href="https://www.linkedin.com/in/al-mouayad-shwin/" target="_blank" rel="noopener" title="LinkedIn">
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.83v2.05h.05c.53-1 1.84-2.05 3.78-2.05 4.05 0 4.8 2.66 4.8 6.13V23h-4v-7.2c0-1.72-.03-3.93-2.4-3.93-2.4 0-2.77 1.87-2.77 3.81V23h-4V8z"/></svg>
+  </a>
+  <!-- Instagram (شكل فقط) -->
+  <span class="fake" title="Instagram">
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 12.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm5.5-8.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+  </span>
+  <!-- Facebook (شكل فقط) -->
+  <span class="fake" title="Facebook">
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l.5-4H13V7.5c0-1.1.3-1.8 1.9-1.8H17V2.1C16.4 2 15.2 2 14 2c-3 0-5 1.8-5 5.1V10H6v4h3v8h4z"/></svg>
+  </span>
+</div>
+<div class="side right" aria-hidden="true">
+  <a href="mailto:eng.almouayad.shwin@gmail.com" style="text-decoration:none">eng.almouayad.shwin@gmail.com</a>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="brand-badge">AL</span></a>
+    <nav>
+      <ul>
+        <li><a href="#about"><span class="num">01.</span>About</a></li>
+        <li><a href="#experience"><span class="num">02.</span>Experience</a></li>
+        <li><a href="#work"><span class="num">03.</span>Work</a></li>
+        <li><a href="#testimonials"><span class="num">04.</span>Feedback</a></li>
+        <li><a href="#contact"><span class="num">05.</span>Contact</a></li>
+        <li><a class="btn resume" href="Al-Mouayad Shwin.-.CV.pdf" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="wrap hero" id="home">
+    <p class="kicker">Hi, my name is</p>
+    <h1 class="big">Al-Mouayad Shwin.</h1>
+    <h2 class="big">I build reliable software for the web &amp; mobile.</h2>
+    <p class="desc">
+      Software Engineer focusing on <b>Laravel</b> microservices, <b>React</b> front-ends, and <b>Flutter</b> apps.
+      Banking integrations, secure REST APIs, and clean UX with performance in mind.
+    </p>
+    <div class="cta">
+      <a class="btn-hello" href="#contact">Get in touch</a>
     </div>
-  </header>
+  </section>
 
-  <main id="home" class="wrap hero">
-    <div class="hero-inner">
-      <section>
-        <span class="tag"><i></i> متاح للتعاون والعمل</span>
-
-        <h1><span class="typewrap">مهندس برمجيات — <span id="typed" class="typed" aria-live="polite"></span></span></h1>
-
-        <p class="lead">خبرة ببناء أنظمة مصرفية، تكامل بوابات الدفع، REST APIs، Microservices، أداء وأمن، ولوحات إدارة Filament، مع دمج تطبيقات Flutter وواجهات React.</p>
-        <div class="cta">
-          <a class="btn mag" href="#contact">تواصل معي الآن</a>
-          <a class="btn ghost mag" href="Al-Mouayad Shwin.-.CV.pdf" download>تحميل السيرة الذاتية PDF</a>
-          <a class="btn ghost mag" href="https://www.linkedin.com/in/al-mouayad-shwin/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn ghost mag" href="https://github.com/mdshwin555" target="_blank" rel="noopener">GitHub</a>
-        </div>
-        <div style="margin-top:12px;color:var(--muted);font-weight:800">
-          دمشق، سوريا • <a href="tel:+963958953288" style="color:inherit">+963 958 953 288</a> •
-          <a href="mailto:eng.almouayad.shwin@gmail.com" style="color:inherit">eng.almouayad.shwin@gmail.com</a>
-        </div>
-        <div class="stack-chips" style="margin-top:14px">
-          <span class="skill">Laravel</span><span class="skill">PHP</span><span class="skill">React.js</span><span class="skill">Flutter (Dart)</span>
-          <span class="skill">REST APIs</span><span class="skill">Microservices</span><span class="skill">SQL Server/MySQL</span>
-          <span class="skill">Redis</span><span class="skill">JWT</span><span class="skill">Docker</span><span class="skill">CI/CD</span>
-        </div>
-      </section>
-
-      <aside class="hero-card tilt" aria-label="بطاقة إنجازات مختصرة">
-        <h3>أثر قابل للقياس</h3>
-        <ul class="muted">
-          <li>خفض زمن استجابة الـ API 35% بتحسين Eloquent وتقليل الـ N+1 Queries.</li>
-          <li>تقليل ضغط قاعدة البيانات 20% عبر طبقة كاش ذكية (Redis) ومؤشرات مناسبة.</li>
-          <li>تقليص زمن النشر 40% بفضل خطوط CI/CD مع اختبارات وتحزيم آلي.</li>
-          <li>رفع تفاعل الواجهة 25% بتحسين تحميل الموارد وتقسيم الحِزم، وتحسين الـ UX.</li>
-          <li>تصميم REST APIs موثّقة بـ OpenAPI مع سياسات JWT وأذونات دقيقة (RBAC).</li>
-          <li>تنبيهات تشغيلية ولوحات مراقبة لإنذارات الأداء والأخطاء بشكل فوري.</li>
+  <!-- About -->
+  <section class="wrap" id="about">
+    <div class="sec-title"><span class="num">01.</span><h2>About Me</h2><div style="flex:1;height:1px;background:#233554"></div></div>
+    <div class="about">
+      <div>
+        <p>
+          I’m a software engineer who enjoys building things that live on the internet — from banking backends
+          and secure APIs to modern dashboards and mobile apps. Recently I’ve been focused on
+          <b>Laravel/Filament</b> admin panels, <b>React</b> front-ends, and <b>Flutter</b> delivery apps.
+        </p>
+        <p>Here are a few technologies I’ve been working with recently:</p>
+        <ul class="list">
+          <li>Laravel (PHP), REST APIs</li><li>React.js, TypeScript</li>
+          <li>Flutter (Dart)</li><li>MySQL / SQL Server</li>
+          <li>Redis, JWT</li><li>CI/CD, Docker</li>
         </ul>
-        <div class="bar"><i></i></div>
-        <div class="muted">تكاملات دفع (Fatora, Sham Cash)، CDM API، وتصويت إلكتروني للمساهمين.</div>
-      </aside>
-    </div>
-  </main>
-
-  <section class="wrap reveal" id="metrics">
-    <div class="stats">
-      <div class="stat-card tilt">
-        <div class="ring" data-percent="25">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <circle class="track" cx="50" cy="50" r="40"></circle>
-            <circle class="prog" cx="50" cy="50" r="40"></circle>
-          </svg>
-          <div class="num" data-target="25">0<small>+</small></div>
-        </div>
-        <div class="stat-body">
-          <div class="stat-title">المشاريع المُسلّمة</div>
-          <div class="stat-note">حلول حقيقية سُلّمت بنجاح</div>
-        </div>
       </div>
-
-      <div class="stat-card tilt">
-        <div class="ring" data-percent="75">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <circle class="track" cx="50" cy="50" r="40"></circle>
-            <circle class="prog" cx="50" cy="50" r="40"></circle>
-          </svg>
-          <div class="num" data-target="75">0<small>+</small></div>
-        </div>
-        <div class="stat-body">
-          <div class="stat-title">عملاء سعداء</div>
-          <div class="stat-note">تجربة ثابتة وثقة مستمرة</div>
-        </div>
-      </div>
-
-      <div class="stat-card tilt">
-        <div class="ring" data-percent="18">
-          <svg viewBox="0 0 100 100" aria-hidden="true">
-            <circle class="track" cx="50" cy="50" r="40"></circle>
-            <circle class="prog" cx="50" cy="50" r="40"></circle>
-          </svg>
-          <div class="num" data-target="18">0<small>+</small></div>
-        </div>
-        <div class="stat-body">
-          <div class="stat-title">تكاملات دفع آمنة</div>
-          <div class="stat-note">بوابات وشبّاك Webhooks موثوقة</div>
+      <div>
+        <div class="photo">
+          <img src="https://v4.brittanychiang.com/static/30a645f7db6038f83287d0c6042d3b2b/f9526/me.avif" alt="Profile"/>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="wrap reveal">
-    <div class="sec-head">
-      <h2>نبذة عنّي</h2>
-      <span class="muted">كتابة، تصميم، تطوير… ثم تحسين الأداء والأمن.</span>
+  <!-- Experience -->
+  <section class="wrap" id="experience">
+    <div class="sec-title"><span class="num">02.</span><h2>Where I’ve Worked</h2><div style="flex:1;height:1px;background:#233554"></div></div>
+
+    <div class="tabs">
+      <div class="tablist" role="tablist" aria-label="Companies">
+        <button class="active" data-tab="tab1">National Islamic Bank</button>
+        <button data-tab="tab2">ShamTech Solutions</button>
+        <button data-tab="tab3">Damascus Digital Lab</button>
+      </div>
+
+      <div>
+        <article id="tab1" class="panel active" role="tabpanel">
+          <h3>Software Engineer <span style="color:var(--accent)">@ National Islamic Bank</span></h3>
+          <div class="meta">Jun 2024 — Jul 2025 · Damascus</div>
+          <ul>
+            <li>Built secure REST APIs and <b>microservices</b> with Laravel; integrated <b>payment gateways</b> (Fatora, Sham Cash) & webhooks.</li>
+            <li>Cut API latency by ~35% via query tuning and Redis caching; automated deploys with CI/CD.</li>
+            <li>Developed Filament admin dashboards and e-voting for shareholders.</li>
+          </ul>
+        </article>
+
+        <article id="tab2" class="panel" role="tabpanel">
+          <h3>Full-Stack Developer <span style="color:var(--accent)">@ ShamTech Solutions</span></h3>
+          <div class="meta">Aug 2023 — May 2024 · Damascus</div>
+          <ul>
+            <li>Delivered multi-step onboarding flows with React & Laravel APIs, including JWT auth.</li>
+            <li>Implemented role-based access control and audit logs across services.</li>
+            <li>Containerized services with Docker and sped up releases using GitHub Actions.</li>
+          </ul>
+        </article>
+
+        <article id="tab3" class="panel" role="tabpanel">
+          <h3>Mobile/Backend Engineer <span style="color:var(--accent)">@ Damascus Digital Lab</span></h3>
+          <div class="meta">Jan 2022 — Jul 2023 · Damascus</div>
+          <ul>
+            <li>Built Flutter delivery app with live tracking and WebSocket notifications.</li>
+            <li>Designed REST contracts with OpenAPI; shipped performance monitoring & alerts.</li>
+            <li>Worked closely with design to ship accessible, responsive UIs.</li>
+          </ul>
+        </article>
+      </div>
     </div>
-    <div class="grid cards">
-      <article class="card tilt" style="grid-column:span 7">
-        <p>مهندس برمجيات بخلفية شاملة (Backend &amp; Mobile) … Laravel Microservices + Filament + Flutter + React مع CI/CD.</p>
-        <p class="muted">أحوّل المتطلبات المعقّدة لحلول بسيطة، مع توثيق واختبارات ومراقبة مؤشرات الأداء.</p>
+  </section>
+
+  <!-- Work -->
+  <section class="wrap" id="work">
+    <div class="sec-title"><span class="num">03.</span><h2>Some Things I’ve Built</h2><div style="flex:1;height:1px;background:#233554"></div></div>
+
+    <div class="featured">
+      <!-- Project 1 -->
+      <article class="proj">
+        <a class="thumb" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/watani-one(2).png" target="_blank" rel="noopener">
+          <img src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/watani-one(2).png" alt="Watani One"/>
+        </a>
+        <div class="content">
+          <div class="eyebrow">Featured Project</div>
+          <h3>Watani One — Banking Suite</h3>
+          <div class="card">Secure services for cards & payments, QR, maps, and continuous delivery with CI/CD. Admin built on Filament.</div>
+          <div class="tech"><span>Laravel</span><span>Filament</span><span>JWT</span><span>CI/CD</span></div>
+        </div>
       </article>
-      <aside class="card tilt" style="grid-column:span 5">
-        <h3>معلومات سريعة</h3>
-        <ul class="muted" style="margin:0 0 0 1rem">
-          <li><b>الموقع:</b> دمشق، سوريا</li>
-          <li><b>اللغة:</b> العربية (أم)، الإنجليزية (بطلاقة)</li>
-          <li><b>متاح:</b> عمل بدوام كامل/جزئي أو حر</li>
-          <li><b>تواصل:</b> <a href="mailto:eng.almouayad.shwin@gmail.com">eng.almouayad.shwin@gmail.com</a></li>
-          <li><b>لينكدإن:</b> <a href="https://www.linkedin.com/in/al-mouayad-shwin/" target="_blank">al-mouayad-shwin</a></li>
-          <li><b>جتهاب:</b> <a href="https://github.com/mdshwin555" target="_blank">mdshwin555</a></li>
-        </ul>
-      </aside>
+
+      <!-- Project 2 -->
+      <article class="proj">
+        <a class="thumb" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/%D9%84%D9%82%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B4%D8%A9%202024-09-08%20120419%201%20(1).png" target="_blank" rel="noopener">
+          <img src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/%D9%84%D9%82%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B4%D8%A9%202024-09-08%20120419%201%20(1).png" alt="Digital Account Opening"/>
+        </a>
+        <div class="content">
+          <div class="eyebrow">Featured Project</div>
+          <h3>Digital Account Opening</h3>
+          <div class="card">Multi-step onboarding with identity checks and approvals. Clean API layer and audit trails.</div>
+          <div class="tech"><span>Laravel</span><span>React</span><span>JWT</span></div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="proj">
+        <a class="thumb" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/Minimalist%20Website%20Launch%20Computer%20Mockup%20Instagram%20Post%20(1).png" target="_blank" rel="noopener">
+          <img src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/Minimalist%20Website%20Launch%20Computer%20Mockup%20Instagram%20Post%20(1).png" alt="Kwickly"/>
+        </a>
+        <div class="content">
+          <div class="eyebrow">Featured Project</div>
+          <h3>Kwickly — Delivery & Tracking</h3>
+          <div class="card">Real-time status, WebSocket notifications, and live map tracking for shipments.</div>
+          <div class="tech"><span>Flutter</span><span>Laravel</span><span>WebSocket</span></div>
+        </div>
+      </article>
+
+      <!-- Project 4: Card Management Platform -->
+      <article class="proj">
+        <a class="thumb" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/image.png" target="_blank" rel="noopener">
+          <img loading="lazy" alt="Card Management Platform"
+               src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/image.png"/>
+        </a>
+        <div class="content">
+          <div class="eyebrow">Featured Project</div>
+          <h3>Card Management Platform</h3>
+          <div class="card">ATM availability dashboards with live maps and monitoring for card services across branches.</div>
+          <div class="tech"><span>REST</span><span>Maps</span><span>React.js</span><span>Laravel</span></div>
+        </div>
+      </article>
+
+      <!-- Project 5: MedTeam -->
+      <article class="proj">
+        <a class="thumb" href="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation%20(1).png?raw=true" target="_blank" rel="noopener">
+          <img loading="lazy" alt="MedTeam"
+               src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation%20(1).png?raw=true"/>
+        </a>
+        <div class="content">
+          <div class="eyebrow">Featured Project</div>
+          <h3>MedTeam</h3>
+          <div class="card">Mobile & admin for medical teams: authentication, scheduling, and media uploads.</div>
+          <div class="tech"><span>Flutter</span><span>Laravel/Filament</span><span>Figma</span></div>
+        </div>
+      </article>
+
+      <!-- Project 6: HADERINE -->
+      <article class="proj">
+        <a class="thumb" href="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation.png?raw=true" target="_blank" rel="noopener">
+          <img loading="lazy" alt="HADERINE"
+               src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation.png?raw=true"/>
+        </a>
+        <div class="content">
+          <div class="eyebrow">Featured Project</div>
+          <h3>HADERINE</h3>
+          <div class="card">On-demand services platform: RBAC, requests, chat/calls, and notifications.</div>
+          <div class="tech"><span>Flutter</span><span>React.js</span><span>MySQL</span><span>Laravel</span></div>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section id="experience" class="wrap reveal">
-    <div class="sec-head">
-      <h2>الخبرة العملية</h2>
-      <span class="muted">مؤسسية ومصرفية • أداء • أتمتة</span>
-    </div>
-    <div class="timeline">
-      <div class="exp tilt">
-        <div class="meta">مهندس برمجيات — المصرف الإسلامي الوطني (يونيو 2024 – يوليو 2025)</div>
-        <h3>Laravel Microservices + Flutter/React + Filament Admin</h3>
-        <ul>
-          <li>تكامل Fatora &amp; Sham Cash مع Webhooks وتسوية أخطاء.</li>
-          <li>بناء CDM API مع سجلات تدقيق كاملة.</li>
-          <li>تصويت إلكتروني للمساهمين (أوزان أسهم/نصاب/تقارير).</li>
-          <li>تحسين Eloquent/Queries والكاش وCI/CD.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  <!-- Testimonials -->
+  <section class="wrap" id="testimonials">
+    <div class="sec-title"><span class="num">04.</span><h2>Clients’ Feedback</h2><div style="flex:1;height:1px;background:#233554"></div></div>
 
-  <section id="projects" class="wrap reveal">
-    <div class="sec-head">
-      <h2>مختارات من المشاريع</h2>
-      <span class="muted">تطبيقات مصرفية، خرائط، فلوهات متعدّدة الخطوات، لحظية</span>
-    </div>
-
-    <div class="grid cards">
-      <a class="card tilt proj" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/watani-one(2).png" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img loading="lazy" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/watani-one(2).png" alt="Watani One">
-        </div>
-        <div class="title">Watani One — National Islamic Bank</div>
-        <div class="muted">خدمات REST آمنة، أدوار وصلاحيات، خرائط وQR، ونشر مستمر.</div>
-        <div class="tags"><span class="tag2">Laravel</span><span class="tag2">Flutter</span><span class="tag2">Filament</span><span class="tag2">JWT</span><span class="tag2">CI/CD</span></div>
-      </a>
-
-      <a class="card tilt proj" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/%D9%84%D9%82%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B4%D8%A9%202024-09-08%20120419%201%20(1).png" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img loading="lazy" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/%D9%84%D9%82%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B4%D8%A9%202024-09-08%20120419%201%20(1).png" alt="Digital Account Opening">
-        </div>
-        <div class="title">Digital Account Opening</div>
-        <div class="muted">فتح حساب متعدد الخطوات: تحقق، تدقيق، موافقات.</div>
-        <div class="tags"><span class="tag2">Laravel</span><span class="tag2">React.js</span><span class="tag2">Filament</span><span class="tag2">JWT</span></div>
-      </a>
-
-      <a class="card tilt proj" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/image.png" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img loading="lazy" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/image.png" alt="Card Management Platform">
-        </div>
-        <div class="title">Card Management Platform</div>
-        <div class="muted">لوحات مراقبة وخرائط لتوفّر الصرّافات الآليّة.</div>
-        <div class="tags"><span class="tag2">Laravel</span><span class="tag2">React.js</span><span class="tag2">Maps</span><span class="tag2">REST</span></div>
-      </a>
-
-      <a class="card tilt proj" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/Minimalist%20Website%20Launch%20Computer%20Mockup%20Instagram%20Post%20(1).png" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img loading="lazy" referrerpolicy="no-referrer" src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/Minimalist%20Website%20Launch%20Computer%20Mockup%20Instagram%20Post%20(1).png" alt="Kwickly">
-        </div>
-        <div class="title">Kwickly App</div>
-        <div class="muted">تسليم وتتبع شحنات: خرائط، WebSocket، إشعارات لحظية.</div>
-        <div class="tags"><span class="tag2">Flutter</span><span class="tag2">Laravel</span><span class="tag2">Filament</span><span class="tag2">WebSocket</span></div>
-      </a>
-
-      <a class="card tilt proj" href="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation.png?raw=true" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img loading="lazy" referrerpolicy="no-referrer" src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation.png?raw=true" alt="HADERINE">
-        </div>
-        <div class="title">HADERINE</div>
-        <div class="muted">منصة خدمات عند الطلب: RBAC، طلبات، دردشة/مكالمات.</div>
-        <div class="tags"><span class="tag2">Laravel</span><span class="tag2">MySQL</span><span class="tag2">React.js</span><span class="tag2">Flutter</span></div>
-      </a>
-
-      <a class="card tilt proj" href="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation%20(1).png?raw=true" target="_blank" rel="noopener">
-        <div class="thumb">
-          <img loading="lazy" referrerpolicy="no-referrer" src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation%20(1).png?raw=true" alt="MedTeam">
-        </div>
-        <div class="title">MedTeam</div>
-        <div class="muted">Flutter + Laravel/Filament + Figma.</div>
-        <div class="tags"><span class="tag2">Flutter</span><span class="tag2">Laravel</span><span class="tag2">Filament</span><span class="tag2">Figma</span></div>
-      </a>
-    </div>
-  </section>
-
-  <section class="wrap reveal" id="testimonials">
-    <div class="sec-head">
-      <h2>آراء العملاء</h2>
-      <span class="muted">مقتطفات قصيرة من شركاء النجاح</span>
-    </div>
-    <div class="t-wrap">
-      <article class="t-card tilt">
+    <div class="grid-cards">
+      <article class="t-card">
         <div class="t-head">
-          <div class="avatar">ل</div>
-          <div>
-            <div style="font-weight:900">ليث منصور</div>
-            <div class="muted" style="margin-top:-2px">مدير تقنية</div>
-          </div>
+          <div class="avatar">L</div>
+          <div><div style="font-weight:900">Laith Mansour</div><div class="t-role">CTO, Logistics</div></div>
         </div>
-        <div class="star" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p style="margin:8px 0 0">تنفيذ متقن وسرعة في الاستجابة. حوّل أفكارنا إلى منتج يعمل بثبات من أول إطلاق.</p>
+        <div class="stars">★★★★★</div>
+        <p>Precise execution and fast responses. Turned our ideas into a stable product from the very first release.</p>
       </article>
 
-      <article class="t-card tilt">
+      <article class="t-card">
         <div class="t-head">
-          <div class="avatar">د</div>
-          <div>
-            <div style="font-weight:900">ديمة الحاج</div>
-            <div class="muted" style="margin-top:-2px">مديرة منتج</div>
-          </div>
+          <div class="avatar">D</div>
+          <div><div style="font-weight:900">Dima Al-Haj</div><div class="t-role">Product Manager</div></div>
         </div>
-        <div class="star" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor" style="opacity:.45"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p style="margin:8px 0 0">تعامل احترافي ووضوح في كل مرحلة. التجربة كانت سلسة 😊.</p>
+        <div class="stars">★★★★☆</div>
+        <p>Smooth collaboration and clear communication across all stages. Loved the attention to details 😊.</p>
       </article>
 
-      <article class="t-card tilt">
+      <article class="t-card">
         <div class="t-head">
-          <div class="avatar">ر</div>
-          <div>
-            <div style="font-weight:900">رامي خضر</div>
-            <div class="muted" style="margin-top:-2px)">مؤسس شركة ناشئة</div>
-          </div>
+          <div class="avatar">R</div>
+          <div><div style="font-weight:900">Rami Khader</div><div class="t-role">Startup Founder</div></div>
         </div>
-        <div class="star" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <p style="margin:8px 0 0">إنجاز قبل الموعد وجودة أعلى من المتوقع 🚀. أنصح بالتعاون معه.</p>
+        <div class="stars">★★★★★</div>
+        <p>Delivered ahead of schedule with higher-than-expected quality 🚀. Highly recommended.</p>
       </article>
     </div>
   </section>
 
-  <section id="skills" class="wrap reveal">
-    <div class="sec-head">
-      <h2>المهارات التقنية</h2>
-      <span class="muted">عمق في الباكند وتكاملات الدفع، مع واجهات حديثة</span>
-    </div>
+  <!-- Contact -->
+  <section class="wrap" id="contact">
+    <div class="cta-center">
+      <p class="kicker"><span class="num" style="color:var(--accent);font-weight:900">05.</span> What’s Next?</p>
+      <h2>Get In Touch</h2>
+      <p>My inbox is always open. Whether you have a question or just want to say hi, I’ll do my best to get back to you!</p>
 
-    <div class="skills">
-      <div class="skill-col tilt">
-        <h3>Backend</h3>
-        <div class="skill-list">
-          <span class="skill"><i>🧱</i> Laravel (PHP)</span>
-          <span class="skill"><i>🔗</i> RESTful APIs</span>
-          <span class="skill"><i>🧩</i> Microservices</span>
-          <span class="skill"><i>🏛️</i> MVC</span>
-          <span class="skill"><i>#</i> C#/.NET Core</span>
-        </div>
-      </div>
-      <div class="skill-col tilt">
-        <h3>Databases &amp; Caching</h3>
-        <div class="skill-list">
-          <span class="skill"><i>🗄️</i> SQL Server</span>
-          <span class="skill"><i>🐬</i> MySQL</span>
-          <span class="skill"><i>🧠</i> Redis</span>
-          <span class="skill"><i>⚡</i> Indexing/Perf</span>
-        </div>
-      </div>
-      <div class="skill-col tilt">
-        <h3>Frontend/Mobile</h3>
-        <div class="skill-list">
-          <span class="skill"><i>⚛️</i> React.js</span>
-          <span class="skill"><i>🐦</i> Flutter (Dart)</span>
-          <span class="skill"><i>🗂️</i> Filament</span>
-          <span class="skill"><i>🖌️</i> HTML/CSS/JS</span>
-        </div>
-      </div>
-      <div class="skill-col tilt">
-        <h3>DevOps</h3>
-        <div class="skill-list">
-          <span class="skill"><i>🌿</i> Git/GitHub</span>
-          <span class="skill"><i>⚙️</i> GitHub Actions</span>
-          <span class="skill"><i>🐳</i> Docker</span>
-          <span class="skill"><i>🚀</i> CI/CD</span>
-        </div>
-      </div>
-      <div class="skill-col tilt">
-        <h3>Quality &amp; Security</h3>
-        <div class="skill-list">
-          <span class="skill"><i>📜</i> OpenAPI/Swagger</span>
-          <span class="skill"><i>🔑</i> JWT</span>
-          <span class="skill"><i>🧪</i> Testing</span>
-          <span class="skill"><i>📝</i> Audit &amp; Logs</span>
-        </div>
-      </div>
-      <div class="skill-col tilt">
-        <h3>Banking</h3>
-        <div class="skill-list">
-          <span class="skill"><i>💳</i> Payment Gateway</span>
-          <span class="skill"><i>🪝</i> Webhooks</span>
-          <span class="skill"><i>📊</i> Reconciliation</span>
-          <span class="skill"><i>🏧</i> CDM</span>
-          <span class="skill"><i>🗳️</i> E-Voting</span>
-        </div>
-      </div>
+      <form class="contact" id="contactForm" novalidate>
+        <input type="text" name="name" placeholder="Full name *" required/>
+        <input type="email" name="email" placeholder="Email address *" required/>
+        <textarea name="message" placeholder="Your message *" class="full" required></textarea>
+
+        <!-- honeypots -->
+        <input type="text" name="company" style="display:none"/>
+        <input type="text" name="_honey" style="display:none"/>
+
+        <button class="btn-accent" type="submit">Send Message</button>
+        <div id="formMsg"></div>
+      </form>
     </div>
   </section>
+</main>
 
-  <section id="education" class="wrap reveal">
-    <div class="sec-head"><h2>التعليم</h2></div>
-    <div class="grid cards">
-      <article class="card tilt" style="grid-column:span 12">
-        <h3 style="margin:.2rem 0 .4rem">بكالوريوس هندسة المعلوماتية — جامعة دمشق</h3>
-        <div class="muted">سبتمبر 2018 – يونيو 2025</div>
-      </article>
-    </div>
-  </section>
+<footer class="wrap">Designed &amp; Built by Al-Mouayad Shwin • © 2025</footer>
 
-  <section id="contact" class="wrap reveal">
-    <div class="sec-head">
-      <h2>تواصل معي</h2>
-      <span class="muted">يبقى المستخدم داخل الصفحة وتظهر رسالة نجاح فقط.</span>
-    </div>
+<script>
+/* Splash fade */
+window.addEventListener('load',()=>setTimeout(()=>{
+  const s=document.getElementById('splash'); s.style.opacity='0'; setTimeout(()=>s.remove(),420);
+},900));
 
-    <form class="contact" id="contactForm" autocomplete="on" novalidate>
-      <input type="text" name="name" placeholder="الاسم الكامل*" required aria-label="الاسم الكامل">
-      <input type="email" name="email" placeholder="بريدك الإلكتروني*" required aria-label="البريد الإلكتروني">
-      <textarea name="message" class="full" placeholder="رسالتك*" required aria-label="نص الرسالة"></textarea>
+/* Tabs logic */
+document.querySelectorAll('.tablist button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tablist button').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
 
-      <input type="text" name="company" style="display:none" autocomplete="off">
-      <input type="text" name="_honey" style="display:none">
-
-      <div style="display:flex; gap:10px; align-items:center">
-        <button class="btn mag" type="submit">إرسال الرسالة</button>
-        <button class="btn ghost mag" type="reset">مسح</button>
-      </div>
-      <div id="formMsg" class="muted full" role="status" aria-live="polite"></div>
-    </form>
-  </section>
-
-  <footer class="wrap">صنع بحب • نسخة صفحة واحدة • حقوق الاسم © المؤيّد شويّن</footer>
-
-  <script>
-    const $ = s => document.querySelector(s);
-    const $$ = s => document.querySelectorAll(s);
-
-    $('#themeBtn')?.addEventListener('click', ()=> {
-      document.documentElement.classList.toggle('alt');
-      const alt = document.documentElement.classList.contains('alt');
-      if(alt){
-        document.documentElement.style.setProperty('--bg','#101114');
-        document.documentElement.style.setProperty('--bg-2','#0a0b0d');
-        document.documentElement.style.setProperty('--card','#0b0d12ee');
-        document.documentElement.style.setProperty('--brand','#7afff1');
-        document.documentElement.style.setProperty('--accent','#39c0ff');
-      }else{
-        document.documentElement.style.removeProperty('--bg');
-        document.documentElement.style.removeProperty('--bg-2');
-        document.documentElement.style.removeProperty('--card');
-        document.documentElement.style.removeProperty('--brand');
-        document.documentElement.style.removeProperty('--accent');
-      }
-    });
-
-    $$('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href'), el = document.querySelector(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+/* Contact AJAX (stay on page) */
+const form=document.getElementById('contactForm');
+const out=document.getElementById('formMsg');
+form?.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const fd=new FormData(form);
+  if(fd.get('company')||fd.get('_honey')) return;
+  const name=(fd.get('name')||'').toString().trim();
+  const email=(fd.get('email')||'').toString().trim();
+  const message=(fd.get('message')||'').toString().trim();
+  if(!name||!email||!message){ out.textContent='Please fill all required fields.'; return; }
+  out.textContent='Sending…';
+  try{
+    const r=await fetch('https://formsubmit.co/ajax/eng.almouayad.shwin@gmail.com',{
+      method:'POST',
+      headers:{'Accept':'application/json','Content-Type':'application/json'},
+      body:JSON.stringify({
+        name,email,message,
+        _subject:`Portfolio message — ${name}`,
+        _template:'table', _captcha:'false',
+        _autoresponse:'Thanks for reaching out! I will reply soon.'
       })
     });
-    const io = new IntersectionObserver((es)=> es.forEach(e=> e.isIntersecting && e.target.classList.add('show')), {threshold:.12});
-    $$('.reveal').forEach(el=> io.observe(el));
-
-    $$('.mag').forEach(el=>{
-      el.addEventListener('mousemove', e=>{
-        const r = el.getBoundingClientRect(); const x = e.clientX - (r.left + r.width/2); const y = e.clientY - (r.top + r.height/2);
-        el.style.transform = `translate(${x*.14}px, ${y*.14}px)`; });
-      el.addEventListener('mouseleave', ()=> el.style.transform = 'none');
-    });
-    $$('.tilt').forEach(card=>{
-      let r=null;
-      const move = e=>{ if(!r) r = card.getBoundingClientRect(); const x = e.clientX - (r.left + r.width/2); const y = e.clientY - (r.top + r.height/2);
-        card.style.transform = `rotateY(${ -x/40 }deg) rotateX(${ y/60 }deg) translateY(-4px)`; };
-      const reset = ()=> card.style.transform = '';
-      card.addEventListener('mousemove', move); card.addEventListener('mouseleave', reset);
-      addEventListener('scroll', ()=> r=null); addEventListener('resize', ()=> r=null);
-    });
-
-    const cDot = $('#cDot'); let cx=innerWidth/2, cy=innerHeight/2, mx=cx, my=cy; const lerp=(a,b,t)=>a+(b-a)*t;
-    (function loop(){ mx=lerp(mx,cx,.2); my=lerp(my,cy,.2); cDot.style.transform=`translate(${mx}px, ${my}px)`; requestAnimationFrame(loop); })();
-    addEventListener('mousemove', e=>{ cx=e.clientX; cy=e.clientY; });
-
-    (function(){
-      const canvas = document.getElementById('bg'); const c = canvas.getContext('2d');
-      let W,H,particles=[],mouse={x:0,y:0,act:false}; const DPR = Math.max(1, devicePixelRatio||1);
-      function resize(){ W=canvas.width=Math.floor(innerWidth*DPR); H=canvas.height=Math.floor(innerHeight*DPR); canvas.style.width=innerWidth+'px'; canvas.style.height=innerHeight+'px';}
-      resize(); addEventListener('resize', resize);
-      const N=120; const rand=(a,b)=>Math.random()*(b-a)+a;
-      function init(){ particles=[]; for(let i=0;i<N;i++){ particles.push({x:rand(0,W),y:rand(0,H),vx:rand(-.25,.25),vy:rand(-.25,.25),r:rand(1,2.2)*DPR,hue:rand(185,260)});} }
-      init();
-      addEventListener('mousemove', e=>{ mouse.x=e.clientX*DPR; mouse.y=e.clientY*DPR; mouse.act=true; }); addEventListener('mouseleave', ()=> mouse.act=false);
-      function step(){ c.clearRect(0,0,W,H);
-        for(const p of particles){ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1;
-          if(mouse.act){ const dx=(mouse.x-p.x), dy=(mouse.y-p.y); const d=Math.hypot(dx,dy)||1; p.vx+=(dx/d)*.02; p.vy+=(dy/d)*.02; }
-          c.beginPath(); c.fillStyle=`hsla(${p.hue},90%,60%,.9)`; c.arc(p.x,p.y,p.r,0,Math.PI*2); c.fill(); }
-        for(let i=0;i<N;i++){ for(let j=i+1;j<N;j++){ const a=particles[i], b=particles[j]; const dx=a.x-b.x, dy=a.y-b.y, d=dx*dx+dy*dy;
-          if(d<(120*DPR)*(120*DPR)){ c.strokeStyle=`rgba(122,255,241, ${Math.max(.02, .12 - d/((120*DPR)*(120*DPR))*.12)})`; c.lineWidth=.7*DPR; c.beginPath(); c.moveTo(a.x,a.y); c.lineTo(b.x,b.y); c.stroke(); } } }
-        requestAnimationFrame(step); } step();
-    })();
-
-    (function(){
-      const el = document.getElementById('typed');
-      const words = ['Laravel','React','Flutter'];
-      let w=0, i=0, typing=true, pause=0;
-      function loop(){
-        const word = words[w];
-        if(typing){ i++; el.textContent = word.slice(0,i); if(i===word.length){ typing=false; pause=14; } }
-        else{ if(pause>0){ pause--; } else { i--; el.textContent = word.slice(0,i); if(i===0){ typing=true; w=(w+1)%words.length; } } }
-        setTimeout(loop, typing ? 85 : 55);
-      }
-      loop();
-    })();
-
-    const contactForm = $('#contactForm');
-    contactForm?.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const fd = new FormData(contactForm);
-      if(fd.get('company') || fd.get('_honey')) return;
-
-      const name = (fd.get('name')||'').toString().trim();
-      const email = (fd.get('email')||'').toString().trim();
-      const msg = (fd.get('message')||'').toString().trim();
-      const out = $('#formMsg');
-
-      if(!name || !email || !msg){ out.textContent='يرجى تعبئة كل الحقول المطلوبة.'; return; }
-      out.textContent = 'جارٍ الإرسال…';
-
-      try{
-        const res = await fetch('https://formsubmit.co/ajax/eng.almouayad.shwin@gmail.com', {
-          method:'POST',
-          headers:{ 'Accept':'application/json', 'Content-Type':'application/json' },
-          body: JSON.stringify({
-            name, email, message: msg,
-            _subject:`رسالة من الموقع — ${name}`,
-            _template:'table',
-            _captcha:'false',
-            _autoresponse:'شكراً لتواصلك، تم استلام رسالتك وسأردّ عليك قريباً.'
-          })
-        });
-        if(!res.ok){ throw new Error('bad_status'); }
-        await res.json();
-        out.textContent = 'تم الإرسال بنجاح ✅ شكراً لتواصلك!';
-        contactForm.reset();
-      }catch{
-        out.textContent = 'تعذّر الإرسال من هذا الوضع. افتح الصفحة عبر استضافة (GitHub Pages/Netlify) أو خادم محلي.';
-      }
-    });
-
-    // عدّادات ودوائر الإحصاءات
-    (function(){
-      const wrap = document.getElementById('metrics');
-      if(!wrap) return;
-      const obs = new IntersectionObserver((entries, o)=>{
-        entries.forEach(e=>{
-          if(!e.isIntersecting) return;
-          if(e.target.dataset.done) return;
-          e.target.dataset.done = '1';
-
-          e.target.querySelectorAll('.ring').forEach(r=>{
-            const p = +r.getAttribute('data-percent');
-            const prog = r.querySelector('.prog');
-            const C = 2*Math.PI*40;
-            prog.style.strokeDasharray = `${C} ${C}`;
-            prog.style.strokeDashoffset = C;
-            const start = performance.now();
-            function anim(t){
-              const k = Math.min(1,(t-start)/1200);
-              prog.style.strokeDashoffset = C - (p/100)*C * k;
-              if(k<1) requestAnimationFrame(anim);
-            }
-            requestAnimationFrame(anim);
-          });
-
-          e.target.querySelectorAll('.num').forEach(n=>{
-            const target = +n.getAttribute('data-target');
-            const plus = n.querySelector('small');
-            let cur = 0;
-            const start = performance.now();
-            function step(t){
-              const k = Math.min(1,(t-start)/1200);
-              cur = Math.floor(target*k);
-              n.firstChild.nodeValue = cur.toString();
-              if(k<1) requestAnimationFrame(step); else n.firstChild.nodeValue = target.toString();
-            }
-            requestAnimationFrame(step);
-            if(plus) plus.textContent = '+';
-          });
-
-          o.unobserve(e.target);
-        });
-      }, {threshold:.35});
-      obs.observe(wrap);
-    })();
-  </script>
+    if(!r.ok) throw 0;
+    await r.json();
+    out.innerHTML='<span class="success">Message sent successfully. Thank you!</span>';
+    form.reset();
+  }catch{
+    out.textContent='Could not send from file://. Please open this page via hosting (GitHub Pages/Netlify) or a local server.';
+  }
+});
+</script>
 </body>
 </html>
