@@ -7,6 +7,7 @@
 <meta name="description" content="Al-Mouayad Shwin — Software Engineer (Laravel, React, Flutter). Portfolio & CV."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<!-- بدائل مجانية تبقى موجودة كـ fallback -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 
 <!-- Favicon: hexagon with AL -->
@@ -18,15 +19,72 @@ href='data:image/svg+xml;utf8,
 </svg>'/>
 
 <style>
+/* ================== Self-hosted Fonts (لو عندك الترخيص/الملفات) ================== */
+/* Calibre — 400/500/600 + Italic */
+@font-face{
+  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-Regular.woff2') format('woff2'),
+                        url('fonts/Calibre/Calibre-Regular.woff') format('woff');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-Medium.woff2') format('woff2'),
+                        url('fonts/Calibre/Calibre-Medium.woff') format('woff');
+  font-weight:500; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-Semibold.woff2') format('woff2'),
+                        url('fonts/Calibre/Calibre-Semibold.woff') format('woff');
+  font-weight:600; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-RegularItalic.woff2') format('woff2'),
+                        url('fonts/Calibre/Calibre-RegularItalic.woff') format('woff');
+  font-weight:400; font-style:italic; font-display:swap;
+}
+@font-face{
+  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-MediumItalic.woff2') format('woff2'),
+                        url('fonts/Calibre/Calibre-MediumItalic.woff') format('woff');
+  font-weight:500; font-style:italic; font-display:swap;
+}
+@font-face{
+  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-SemiboldItalic.woff2') format('woff2'),
+                        url('fonts/Calibre/Calibre-SemiboldItalic.woff') format('woff');
+  font-weight:600; font-style:italic; font-display:swap;
+}
+
+/* SF Mono — 400/600 + Italic */
+@font-face{
+  font-family:'SF Mono'; src:url('fonts/SFMono/SFMono-Regular.woff2') format('woff2'),
+                         url('fonts/SFMono/SFMono-Regular.woff') format('woff');
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'SF Mono'; src:url('fonts/SFMono/SFMono-Semibold.woff2') format('woff2'),
+                         url('fonts/SFMono/SFMono-Semibold.woff') format('woff');
+  font-weight:600; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'SF Mono'; src:url('fonts/SFMono/SFMono-RegularItalic.woff2') format('woff2'),
+                         url('fonts/SFMono/SFMono-RegularItalic.woff') format('woff');
+  font-weight:400; font-style:italic; font-display:swap;
+}
+@font-face{
+  font-family:'SF Mono'; src:url('fonts/SFMono/SFMono-SemiboldItalic.woff2') format('woff2'),
+                         url('fonts/SFMono/SFMono-SemiboldItalic.woff') format('woff');
+  font-weight:600; font-style:italic; font-display:swap;
+}
+
+/* ================== Theme ================== */
 :root{
   --bg:#0a192f; --bg-2:#0b1c36;
   --text:#ccd6f6; --muted:#8892b0; --muted-2:#a8b2d1;
   --title:#e6f1ff; --accent:#64ffda; --card:#112240;
   --shadow:0 10px 30px -10px rgba(2,12,27,.7);
   --radius:6px; --radius-lg:8px; --w:1100px;
-  --font:"Inter", system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-  --mono:"Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  --header-h:80px; /* ارتفاع الهيدر */
+  /* استخدم Calibre/SF Mono إن وُجدت؛ وإلا يسقط على Inter/Space Mono */
+  --font:"Calibre","Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  --mono:"SF Mono","Space Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --header-h:80px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -79,12 +137,12 @@ p{color:var(--muted)}
 
 /* ---------- Hero (لوسط الشاشة وتحت الهيدر) ---------- */
 .hero{
-  margin-top:var(--header-h);                /* يبدأ تحت الهيدر */
+  margin-top:var(--header-h);
   padding:0;
-  min-height:calc(100vh - var(--header-h));  /* fallback */
-  min-height:calc(100svh - var(--header-h)); /* iOS/Android address bar */
-  min-height:calc(100dvh - var(--header-h)); /* أحدث وحدة */
-  min-height:calc((var(--vh, 1vh) * 100) - var(--header-h)); /* JS fallback ديناميكي */
+  min-height:calc(100vh - var(--header-h));
+  min-height:calc(100svh - var(--header-h));
+  min-height:calc(100dvh - var(--header-h));
+  min-height:calc((var(--vh, 1vh) * 100) - var(--header-h));
   display:flex;align-items:center;
 }
 .kicker{color:var(--accent);font-weight:900;margin:0 0 12px}
@@ -309,17 +367,14 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
 <div class="side right" aria-hidden="true">
   <a href="mailto:eng.almouayad.shwin@gmail.com" style="text-decoration:none">eng.almouayad.shwin@gmail.com</a>
 </div>
+
+<!-- هيدر حسب آخر تعديل إلك (لوغو مزاح يسار + سبايسر قبل القائمة) -->
 <header>
   <div class="wrap nav">
-    <!-- اللوغو مزاح لليسار عبر margin-left سالب (عدّل -28px إذا بدك) -->
     <a class="brand" href="#top" style="margin-left:-200px;">
       <span class="brand-badge">AL</span>
     </a>
-
-    <!-- سبايسر ثابت لزيادة الفراغ بين اللوغو والقائمة -->
     <span aria-hidden="true" style="flex:0 0 550px;"></span>
-
-    <!-- الناف يمين دائماً -->
     <nav style="margin-left:auto;">
       <ul>
         <li><a href="#about"><span class="num">01.</span>About</a></li>
@@ -332,9 +387,6 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
     </nav>
   </div>
 </header>
-
-
-
 
 <main id="top">
   <!-- Hero -->
