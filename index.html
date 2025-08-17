@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>المؤيّد شويّن | بورتفوليو + سيرة ذاتية</title>
+  <meta name="description" content="بورتفوليو تفاعلي وسيرة ذاتية للمؤيّد شويّن — مهندس برمجيات (Laravel, Flutter, React) مع خبرة في الأنظمة المصرفية والـ Microservices وواجهات المستخدم." />
+
+  <!-- Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f14; --bg-2:#0e141b; --card:#0f1720cc;
+      --txt:#e6edf3; --muted:#9fb0c1;
+      --brand:#39c0ff; --brand-2:#7afff1; --accent:#9a7bff;
+      --success:#41d19f; --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:14px; --radius-lg:18px; --grid-gap:18px; --maxw:1150px;
+      --font:"Cairo", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f6f9fc; --bg-2:#eef3f8; --card:#ffffffee; --txt:#0f1720; --muted:#506176; --shadow:0 10px 30px rgba(0,0,0,.08); }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(160deg,var(--bg),var(--bg-2));color:var(--txt);font-family:var(--font);line-height:1.65;overflow-x:hidden}
+
+    canvas#bg{position:fixed;inset:0;z-index:-2;display:block}
+    .fog{position:fixed;inset:-20vh -20vw;z-index:-1;pointer-events:none;
+      background:radial-gradient(60vmax 60vmax at 80% 20%, rgba(57,192,255,.09), transparent 60%),
+                 radial-gradient(50vmax 50vmax at 10% 80%, rgba(154,123,255,.08), transparent 60%),
+                 radial-gradient(40vmax 40vmax at 60% 60%, rgba(122,255,241,.07), transparent 60%);
+      filter:blur(40px)}
+    /* مؤشر: نقطة فقط */
+    .cursor-dot{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:difference;width:6px;height:6px;border-radius:50%;background:#fff}
+
+    .wrap{max-width:var(--maxw);margin-inline:auto;padding:28px}
+    header.nav{position:sticky;top:0;background:linear-gradient(to bottom, rgba(15,23,32,.85), rgba(15,23,32,.35) 60%, transparent);
+      backdrop-filter:saturate(140%) blur(10px);z-index:50;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav-bar{display:flex;align-items:center;gap:14px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--txt)}
+    .brand .logo{width:34px;height:34px;border-radius:10px;background:
+      conic-gradient(from 210deg, var(--brand), var(--accent), var(--brand-2), var(--brand));
+      box-shadow:0 6px 20px rgba(57,192,255,.35), inset 0 0 30px rgba(154,123,255,.35)}
+    nav ul{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;font-weight:800}
+    nav a:hover{color:var(--brand)}
+    .pill{background:linear-gradient(135deg, rgba(57,192,255,.15), rgba(154,123,255,.15));padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.08)}
+    .mag{display:inline-grid;place-items:center;transition:transform .15s}
+    .mag:hover{transform:translateY(-1px)}
+    .theme{display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1px solid rgba(255,255,255,.12);padding:8px 12px;cursor:pointer;background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02))}
+
+    .hero{position:relative;padding:70px 0 40px;min-height:66vh;display:grid;align-items:center}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
+    @media (max-width:950px){.hero-inner{grid-template-columns:1fr}}
+    .tag{display:inline-flex;gap:10px;align-items:center;font-size:.95rem;color:var(--muted);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px}
+    .tag i{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 12px var(--success)}
+
+    h1{margin:10px 0 6px;line-height:1.15;font-weight:900;font-size:clamp(1.9rem, 3.4vw + 1rem, 3.2rem)}
+    .typewrap{display:inline-flex;align-items:center;gap:8px}
+    .typed{background:linear-gradient(135deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
+    .typed::after{content:"|";margin-inline-start:4px;opacity:.7;animation:blink 1s step-end infinite}
+    @keyframes blink{50%{opacity:.05}}
+    .lead{font-size:1.12rem;color:var(--muted);margin:0 0 16px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .btn{--bgbtn:linear-gradient(135deg,var(--brand),var(--accent));color:#000;background:var(--bgbtn);border:none;border-radius:12px;padding:12px 16px;font-weight:900;cursor:pointer;text-decoration:none;box-shadow:var(--shadow)}
+    .btn.ghost{background:transparent;color:var(--txt);border:1.5px solid rgba(255,255,255,.18)}
+
+    /* بطاقة الأثر – صغّرناها */
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius-lg);padding:12px 14px;box-shadow:var(--shadow);transform-style:preserve-3d}
+    .hero-card h3{margin:4px 0 6px}
+    .hero-card ul{margin:0 0 6px 1rem;font-size:.98rem;line-height:1.6}
+    .hero-card .muted{font-size:.92rem}
+
+    section{padding:48px 0}
+    .sec-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}
+    .sec-head h2{margin:0;font-size:1.6rem}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:var(--grid-gap)}
+    .grid.cards{grid-template-columns:repeat(12,1fr)}
+    .card{grid-column:span 4;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);transition:transform .18s ease,border-color .2s;transform-style:preserve-3d;text-decoration:none;color:inherit}
+    .card:hover{transform:translateY(-4px)}
+    @media (max-width:980px){.card{grid-column:span 6}}
+    @media (max-width:640px){.card{grid-column:span 12}}
+
+    .timeline{position:relative;margin:8px 0 0;padding:8px 0 0}
+    .timeline::before{content:"";position:absolute;inset:0 50% 0 auto;width:2px;background:linear-gradient(var(--brand), transparent 80%);opacity:.6}
+    .exp{position:relative;padding:14px 16px 14px 18px;margin:18px 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px}
+    .exp::before{content:"";position:absolute;right:calc(50% - 6px);top:18px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff, var(--brand));box-shadow:0 0 0 4px rgba(57,192,255,.18)}
+    .exp h3{margin:.2rem 0 .4rem;font-size:1.08rem}
+    .exp .meta{font-weight:800;color:var(--muted);font-size:.98rem;margin-bottom:6px}
+    .exp ul{margin:8px 0 0 1rem}
+
+    /* المشاريع مع صورة */
+    .proj{display:flex;flex-direction:column;gap:10px;overflow:hidden}
+    .thumb{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.03)}
+    .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.25));pointer-events:none}
+    .proj .title{font-weight:900}
+    .tags{display:flex;flex-wrap:wrap;gap:8px}
+    .tag2{padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:.92rem;color:var(--muted);background:rgba(255,255,255,.03)}
+
+    /* المهارات */
+    .skills{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--grid-gap)}
+    .skill-col{grid-column:span 4;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px}
+    @media (max-width:980px){.skill-col{grid-column:span 6}}
+    @media (max-width:640px){.skill-col{grid-column:span 12}}
+    .skill-col h3{margin:.4rem 0 1rem;font-size:1.06rem}
+    .skill-list{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-weight:800}
+    .skill i{width:20px;height:20px;border-radius:6px;display:inline-grid;place-items:center;background:linear-gradient(135deg, rgba(57,192,255,.25), rgba(154,123,255,.25));font-style:normal;font-size:13px;line-height:1}
+
+    form.contact{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    form.contact .full{grid-column:1/-1}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:var(--txt);outline:none;font-family:var(--font)}
+    textarea{min-height:140px;resize:vertical}
+    input:focus,textarea:focus{border-color:var(--brand)}
+    footer{padding:36px 0;color:var(--muted);text-align:center;border-top:1px solid rgba(255,255,255,.08)}
+    .reveal{opacity:0;transform:translateY(14px) scale(.98);transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1;transform:none}
+    @media print{.nav,.cta,.theme,.fog,canvas#bg{display:none !important} body{background:#fff} .card,.hero-card,.exp{box-shadow:none;border-color:#ddd} a{color:#000}}
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div class="fog" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cDot"></div>
+
+  <header class="nav">
+    <div class="wrap nav-bar">
+      <a class="brand" href="#home" aria-label="الانتقال للبداية">
+        <div class="logo" aria-hidden="true"></div>
+        <b>المؤيّد شويّن</b>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#about">نبذة</a></li>
+          <li><a href="#experience">خبرة</a></li>
+          <li><a href="#projects">مشاريع</a></li>
+          <li><a href="#skills">مهارات</a></li>
+          <li><a href="#education">تعليم</a></li>
+          <li><a href="#contact" class="pill mag">تواصل</a></li>
+        </ul>
+      </nav>
+      <button class="theme" id="themeBtn" title="تبديل النمط">
+        <span>النمط</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0 0 18c4.97 0 9-4.03 9-9 0-3.87-2.45-7.16-5.86-8.4A7 7 0 0 1 12 20a7 7 0 0 1 0-14z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="home" class="wrap hero">
+    <div class="hero-inner">
+      <section>
+        <span class="tag"><i></i> متاح للتعاون والعمل</span>
+
+        <!-- عنوان مع تأثير كتابة -->
+        <h1><span class="typewrap">مهندس برمجيات — <span id="typed" class="typed" aria-live="polite"></span></span></h1>
+
+        <p class="lead">خبرة ببناء أنظمة مصرفية، تكامل بوابات الدفع، REST APIs، Microservices، أداء وأمن، ولوحات إدارة Filament، مع دمج تطبيقات Flutter وواجهات React.</p>
+        <div class="cta">
+          <a class="btn mag" href="#contact">تواصل معي الآن</a>
+          <a class="btn ghost mag" href="Al-Mouayad Shwin.-.CV.pdf" download>تحميل السيرة الذاتية PDF</a>
+          <a class="btn ghost mag" href="https://www.linkedin.com/in/al-mouayad-shwin/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn ghost mag" href="https://github.com/mdshwin555" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div style="margin-top:12px;color:var(--muted);font-weight:800">
+          دمشق، سوريا • <a href="tel:+963958953288" style="color:inherit">+963 958 953 288</a> •
+          <a href="mailto:eng.almouayad.shwin@gmail.com" style="color:inherit">eng.almouayad.shwin@gmail.com</a>
+        </div>
+        <div class="stack-chips" style="margin-top:14px">
+          <span class="chip">Laravel</span><span class="chip">PHP</span><span class="chip">React.js</span><span class="chip">Flutter (Dart)</span>
+          <span class="chip">REST APIs</span><span class="chip">Microservices</span><span class="chip">SQL Server/MySQL</span>
+          <span class="chip">Redis</span><span class="chip">JWT</span><span class="chip">Docker</span><span class="chip">CI/CD</span>
+        </div>
+      </section>
+
+      <aside class="hero-card tilt" aria-label="بطاقة إنجازات مختصرة">
+        <h3>أثر قابل للقياس</h3>
+        <ul class="muted">
+          <li>خفض زمن استجابة الـ API 35% بتحسين Eloquent.</li>
+          <li>تقليل ضغط قاعدة البيانات 20% عبر الكاش.</li>
+          <li>تقليص زمن النشر 40% بفضل CI/CD.</li>
+          <li>رفع تفاعل الواجهة 25% بتحسين الأداء.</li>
+        </ul>
+        <div class="muted">تكاملات دفع (Fatora, Sham Cash)، CDM API، وتصويت إلكتروني للمساهمين.</div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap reveal">
+    <div class="sec-head">
+      <h2>نبذة عنّي</h2>
+      <span class="muted">كتابة، تصميم، تطوير… ثم تحسين الأداء والأمن.</span>
+    </div>
+    <div class="grid cards">
+      <article class="card tilt" style="grid-column:span 7">
+        <p>مهندس برمجيات بخلفية شاملة (Backend &amp; Mobile) … Laravel Microservices + Filament + Flutter + React مع CI/CD.</p>
+        <p class="muted">أحوّل المتطلبات المعقّدة لحلول بسيطة، مع توثيق واختبارات ومراقبة مؤشرات الأداء.</p>
+      </article>
+      <aside class="card tilt" style="grid-column:span 5">
+        <h3>معلومات سريعة</h3>
+        <ul class="muted" style="margin:0 0 0 1rem">
+          <li><b>الموقع:</b> دمشق، سوريا</li>
+          <li><b>اللغة:</b> العربية (أم)، الإنجليزية (بطلاقة)</li>
+          <li><b>متاح:</b> عمل بدوام كامل/جزئي أو حر</li>
+          <li><b>تواصل:</b> <a href="mailto:eng.almouayad.shwin@gmail.com">eng.almouayad.shwin@gmail.com</a></li>
+          <li><b>لينكدإن:</b> <a href="https://www.linkedin.com/in/al-mouayad-shwin/" target="_blank">al-mouayad-shwin</a></li>
+          <li><b>جتهاب:</b> <a href="https://github.com/mdshwin555" target="_blank">mdshwin555</a></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="wrap reveal">
+    <div class="sec-head">
+      <h2>الخبرة العملية</h2>
+      <span class="muted">مؤسسية ومصرفية • أداء • أتمتة</span>
+    </div>
+    <div class="timeline">
+      <div class="exp tilt">
+        <div class="meta">مهندس برمجيات — المصرف الإسلامي الوطني (يونيو 2024 – يوليو 2025)</div>
+        <h3>Laravel Microservices + Flutter/React + Filament Admin</h3>
+        <ul>
+          <li>تكامل Fatora &amp; Sham Cash مع Webhooks وتسوية أخطاء.</li>
+          <li>بناء CDM API مع سجلات تدقيق كاملة.</li>
+          <li>تصويت إلكتروني للمساهمين (أوزان أسهم/نصاب/تقارير).</li>
+          <li>تحسين Eloquent/Queries والكاش وCI/CD.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="wrap reveal">
+    <div class="sec-head">
+      <h2>مختارات من المشاريع</h2>
+      <span class="muted">تطبيقات مصرفية، خرائط، فلوهات متعدّدة الخطوات، لحظية</span>
+    </div>
+
+    <div class="grid cards">
+      <!-- استخدمنا صيغة uc?id=... + referrerpolicy لتعمل مباشرة -->
+      <a class="card tilt proj" href="https://drive.google.com/file/d/1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/uc?id=1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT" alt="Watani One">
+        </div>
+        <div class="title">Watani One — National Islamic Bank</div>
+        <div class="muted">خدمات REST آمنة، أدوار وصلاحيات، خرائط وQR، ونشر مستمر.</div>
+        <div class="tags"><span class="tag2">Laravel</span><span class="tag2">Flutter</span><span class="tag2">Filament</span><span class="tag2">JWT</span><span class="tag2">CI/CD</span></div>
+      </a>
+
+      <a class="card tilt proj" href="https://drive.google.com/file/d/1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/uc?id=1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT" alt="Digital Account Opening">
+        </div>
+        <div class="title">Digital Account Opening</div>
+        <div class="muted">فتح حساب متعدد الخطوات: تحقق، تدقيق، موافقات.</div>
+        <div class="tags"><span class="tag2">Laravel</span><span class="tag2">React.js</span><span class="tag2">Filament</span><span class="tag2">JWT</span></div>
+      </a>
+
+      <a class="card tilt proj" href="https://drive.google.com/file/d/1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/uc?id=1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT" alt="Card Management Platform">
+        </div>
+        <div class="title">Card Management Platform</div>
+        <div class="muted">لوحات مراقبة وخرائط لتوفّر الصرّافات الآليّة.</div>
+        <div class="tags"><span class="tag2">Laravel</span><span class="tag2">React.js</span><span class="tag2">Maps</span><span class="tag2">REST</span></div>
+      </a>
+
+      <a class="card tilt proj" href="https://drive.google.com/file/d/1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/uc?id=1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT" alt="Kwickly">
+        </div>
+        <div class="title">Kwickly App (عمولة)</div>
+        <div class="muted">تسليم وتتبع شحنات: خرائط، WebSocket، إشعارات لحظية.</div>
+        <div class="tags"><span class="tag2">Flutter</span><span class="tag2">Laravel</span><span class="tag2">Filament</span><span class="tag2">WebSocket</span></div>
+      </a>
+
+      <a class="card tilt proj" href="https://drive.google.com/file/d/1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/uc?id=1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT" alt="HADERINE">
+        </div>
+        <div class="title">HADERINE</div>
+        <div class="muted">منصة خدمات عند الطلب: RBAC، طلبات، دردشة/مكالمات.</div>
+        <div class="tags"><span class="tag2">Laravel</span><span class="tag2">MySQL</span><span class="tag2">React.js</span><span class="tag2">Flutter</span></div>
+      </a>
+
+      <a class="card tilt proj" href="https://drive.google.com/file/d/1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT/view?usp=sharing" target="_blank" rel="noopener">
+        <div class="thumb">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://drive.google.com/uc?id=1jd7ZZEqvqxTpdvpwWS3EnIN_WDEYQvGT" alt="MedTeam">
+        </div>
+        <div class="title">MedTeam</div>
+        <div class="muted">Flutter + Laravel/Filament + Figma.</div>
+        <div class="tags"><span class="tag2">Flutter</span><span class="tag2">Laravel</span><span class="tag2">Filament</span><span class="tag2">Figma</span></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="wrap reveal">
+    <div class="sec-head">
+      <h2>المهارات التقنية</h2>
+      <span class="muted">عمق في الباكند وتكاملات الدفع، مع واجهات حديثة</span>
+    </div>
+
+    <div class="skills">
+      <div class="skill-col tilt">
+        <h3>Backend</h3>
+        <div class="skill-list">
+          <span class="skill"><i>🧱</i> Laravel (PHP)</span>
+          <span class="skill"><i>🔗</i> RESTful APIs</span>
+          <span class="skill"><i>🧩</i> Microservices</span>
+          <span class="skill"><i>🏛️</i> MVC</span>
+          <span class="skill"><i>#</i> C#/.NET Core</span>
+        </div>
+      </div>
+      <div class="skill-col tilt">
+        <h3>Databases &amp; Caching</h3>
+        <div class="skill-list">
+          <span class="skill"><i>🗄️</i> SQL Server</span>
+          <span class="skill"><i>🐬</i> MySQL</span>
+          <span class="skill"><i>🧠</i> Redis</span>
+          <span class="skill"><i>⚡</i> Indexing/Perf</span>
+        </div>
+      </div>
+      <div class="skill-col tilt">
+        <h3>Frontend/Mobile</h3>
+        <div class="skill-list">
+          <span class="skill"><i>⚛️</i> React.js</span>
+          <span class="skill"><i>🐦</i> Flutter (Dart)</span>
+          <span class="skill"><i>🗂️</i> Filament</span>
+          <span class="skill"><i>🖌️</i> HTML/CSS/JS</span>
+        </div>
+      </div>
+      <div class="skill-col tilt">
+        <h3>DevOps</h3>
+        <div class="skill-list">
+          <span class="skill"><i>🌿</i> Git/GitHub</span>
+          <span class="skill"><i>⚙️</i> GitHub Actions</span>
+          <span class="skill"><i>🐳</i> Docker</span>
+          <span class="skill"><i>🚀</i> CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-col tilt">
+        <h3>Quality &amp; Security</h3>
+        <div class="skill-list">
+          <span class="skill"><i>📜</i> OpenAPI/Swagger</span>
+          <span class="skill"><i>🔑</i> JWT</span>
+          <span class="skill"><i>🧪</i> Testing</span>
+          <span class="skill"><i>📝</i> Audit &amp; Logs</span>
+        </div>
+      </div>
+      <div class="skill-col tilt">
+        <h3>Banking</h3>
+        <div class="skill-list">
+          <span class="skill"><i>💳</i> Payment Gateway</span>
+          <span class="skill"><i>🪝</i> Webhooks</span>
+          <span class="skill"><i>📊</i> Reconciliation</span>
+          <span class="skill"><i>🏧</i> CDM</span>
+          <span class="skill"><i>🗳️</i> E-Voting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="wrap reveal">
+    <div class="sec-head"><h2>التعليم</h2></div>
+    <div class="grid cards">
+      <article class="card tilt" style="grid-column:span 12">
+        <h3 style="margin:.2rem 0 .4rem">بكالوريوس هندسة المعلوماتية — جامعة دمشق</h3>
+        <div class="muted">سبتمبر 2018 – يونيو 2025</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="wrap reveal">
+    <div class="sec-head">
+      <h2>تواصل معي</h2>
+      <span class="muted">يبقى المستخدم داخل الصفحة وتظهر رسالة نجاح فقط.</span>
+    </div>
+
+    <form class="contact" id="contactForm" autocomplete="on" novalidate>
+      <input type="text" name="name" placeholder="الاسم الكامل*" required aria-label="الاسم الكامل">
+      <input type="email" name="email" placeholder="بريدك الإلكتروني*" required aria-label="البريد الإلكتروني">
+      <textarea name="message" class="full" placeholder="رسالتك*" required aria-label="نص الرسالة"></textarea>
+
+      <!-- مصائد سبام -->
+      <input type="text" name="company" style="display:none" autocomplete="off">
+      <input type="text" name="_honey" style="display:none">
+
+      <div style="display:flex; gap:10px; align-items:center">
+        <button class="btn mag" type="submit">إرسال الرسالة</button>
+        <button class="btn ghost mag" type="reset">مسح</button>
+      </div>
+      <div id="formMsg" class="muted full" role="status" aria-live="polite"></div>
+    </form>
+  </section>
+
+  <footer class="wrap">صنع بحب • نسخة صفحة واحدة • حقوق الاسم © المؤيّد شويّن</footer>
+
+  <script>
+    const $ = s => document.querySelector(s);
+    const $$ = s => document.querySelectorAll(s);
+
+    // تبديل النمط
+    $('#themeBtn')?.addEventListener('click', ()=> {
+      document.documentElement.classList.toggle('alt');
+      const alt = document.documentElement.classList.contains('alt');
+      if(alt){
+        document.documentElement.style.setProperty('--bg','#101114');
+        document.documentElement.style.setProperty('--bg-2','#0a0b0d');
+        document.documentElement.style.setProperty('--card','#0b0d12ee');
+        document.documentElement.style.setProperty('--brand','#7afff1');
+        document.documentElement.style.setProperty('--accent','#39c0ff');
+      }else{
+        document.documentElement.style.removeProperty('--bg');
+        document.documentElement.style.removeProperty('--bg-2');
+        document.documentElement.style.removeProperty('--card');
+        document.documentElement.style.removeProperty('--brand');
+        document.documentElement.style.removeProperty('--accent');
+      }
+    });
+
+    // سكرول سلس + ظهور أقسام
+    $$('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href'), el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      })
+    });
+    const io = new IntersectionObserver((es)=> es.forEach(e=> e.isIntersecting && e.target.classList.add('show')), {threshold:.12});
+    $$('.reveal').forEach(el=> io.observe(el));
+
+    // أزرار مغناطيسية + ميلان الكروت
+    $$('.mag').forEach(el=>{
+      el.addEventListener('mousemove', e=>{
+        const r = el.getBoundingClientRect(); const x = e.clientX - (r.left + r.width/2); const y = e.clientY - (r.top + r.height/2);
+        el.style.transform = `translate(${x*.14}px, ${y*.14}px)`; });
+      el.addEventListener('mouseleave', ()=> el.style.transform = 'none');
+    });
+    $$('.tilt').forEach(card=>{
+      let r=null;
+      const move = e=>{ if(!r) r = card.getBoundingClientRect(); const x = e.clientX - (r.left + r.width/2); const y = e.clientY - (r.top + r.height/2);
+        card.style.transform = `rotateY(${ -x/40 }deg) rotateX(${ y/60 }deg) translateY(-4px)`; };
+      const reset = ()=> card.style.transform = '';
+      card.addEventListener('mousemove', move); card.addEventListener('mouseleave', reset);
+      addEventListener('scroll', ()=> r=null); addEventListener('resize', ()=> r=null);
+    });
+
+    // مؤشر نقطة
+    const cDot = $('#cDot'); let cx=innerWidth/2, cy=innerHeight/2, mx=cx, my=cy; const lerp=(a,b,t)=>a+(b-a)*t;
+    const tick=()=>{ mx=lerp(mx,cx,.2); my=lerp(my,cy,.2); cDot.style.transform=`translate(${mx}px, ${my}px)`; requestAnimationFrame(tick); }; tick();
+    addEventListener('mousemove', e=>{ cx=e.clientX; cy=e.clientY; });
+
+    // خلفية Particles
+    (function(){
+      const canvas = document.getElementById('bg'); const c = canvas.getContext('2d');
+      let W,H,particles=[],mouse={x:0,y:0,act:false}; const DPR = Math.max(1, devicePixelRatio||1);
+      function resize(){ W=canvas.width=Math.floor(innerWidth*DPR); H=canvas.height=Math.floor(innerHeight*DPR); canvas.style.width=innerWidth+'px'; canvas.style.height=innerHeight+'px';}
+      resize(); addEventListener('resize', resize);
+      const N=120; const rand=(a,b)=>Math.random()*(b-a)+a;
+      function init(){ particles=[]; for(let i=0;i<N;i++){ particles.push({x:rand(0,W),y:rand(0,H),vx:rand(-.25,.25),vy:rand(-.25,.25),r:rand(1,2.2)*DPR,hue:rand(185,260)});} }
+      init();
+      addEventListener('mousemove', e=>{ mouse.x=e.clientX*DPR; mouse.y=e.clientY*DPR; mouse.act=true; }); addEventListener('mouseleave', ()=> mouse.act=false);
+      function step(){ c.clearRect(0,0,W,H);
+        for(const p of particles){ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1;
+          if(mouse.act){ const dx=(mouse.x-p.x), dy=(mouse.y-p.y); const d=Math.hypot(dx,dy)||1; p.vx+=(dx/d)*.02; p.vy+=(dy/d)*.02; }
+          c.beginPath(); c.fillStyle=`hsla(${p.hue},90%,60%,.9)`; c.arc(p.x,p.y,p.r,0,Math.PI*2); c.fill(); }
+        for(let i=0;i<N;i++){ for(let j=i+1;j<N;j++){ const a=particles[i], b=particles[j]; const dx=a.x-b.x, dy=a.y-b.y, d=dx*dx+dy*dy;
+          if(d<(120*DPR)*(120*DPR)){ c.strokeStyle=`rgba(122,255,241, ${Math.max(.02, .12 - d/((120*DPR)*(120*DPR))*.12)})`; c.lineWidth=.7*DPR; c.beginPath(); c.moveTo(a.x,a.y); c.lineTo(b.x,b.y); c.stroke(); } } }
+        requestAnimationFrame(step); } step();
+    })();
+
+    // تأثير الكتابة (Laravel, React, Flutter)
+    (function(){
+      const el = document.getElementById('typed');
+      const words = ['Laravel','React','Flutter'];
+      let w=0, i=0, typing=true, pause=0;
+      function loop(){
+        const word = words[w];
+        if(typing){ i++; el.textContent = word.slice(0,i); if(i===word.length){ typing=false; pause=14; } }
+        else{ if(pause>0){ pause--; } else { i--; el.textContent = word.slice(0,i); if(i===0){ typing=true; w=(w+1)%words.length; } } }
+        setTimeout(loop, typing ? 85 : 55);
+      }
+      loop();
+    })();
+
+    // إرسال الاتصال عبر AJAX بدون مغادرة الصفحة
+    const contactForm = $('#contactForm');
+    contactForm?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd = new FormData(contactForm);
+      if(fd.get('company') || fd.get('_honey')) return; // سبام
+
+      const name = (fd.get('name')||'').toString().trim();
+      const email = (fd.get('email')||'').toString().trim();
+      const msg = (fd.get('message')||'').toString().trim();
+      const out = $('#formMsg');
+
+      if(!name || !email || !msg){ out.textContent='يرجى تعبئة كل الحقول المطلوبة.'; return; }
+
+      out.textContent = 'جارٍ الإرسال…';
+
+      try{
+        // Endpoint JSON الخاص بـ FormSubmit
+        const res = await fetch('https://formsubmit.co/ajax/eng.almouayad.shwin@gmail.com', {
+          method:'POST',
+          headers:{ 'Accept':'application/json', 'Content-Type':'application/json' },
+          body: JSON.stringify({
+            name, email, message: msg,
+            _subject:`رسالة من الموقع — ${name}`,
+            _template:'table',
+            _captcha:'false',
+            _autoresponse:'شكراً لتواصلك، تم استلام رسالتك وسأردّ عليك قريباً.'
+          })
+        });
+
+        if(!res.ok){ throw new Error('bad_status'); }
+        await res.json();
+        out.textContent = 'تم الإرسال بنجاح ✅ شكراً لتواصلك!';
+        contactForm.reset();
+      }catch(err){
+        // بعض المتصفحات عندما تُفتح الصفحة كملف file:// قد تمنع الاتصال الخارجي
+        out.textContent = 'تعذّر الإرسال من هذا الوضع. افتح الصفحة عبر استضافة (مثلاً GitHub Pages/Netlify) أو شغّل Local Server مثل Live Server في VSCode.';
+      }
+    });
+
+    // تحسين وصول
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') document.activeElement?.blur(); });
+  </script>
+</body>
+</html>
