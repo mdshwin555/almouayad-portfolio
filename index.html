@@ -7,10 +7,8 @@
 <meta name="description" content="Al-Mouayad Shwin — Software Engineer (Laravel, React, Flutter). Portfolio & CV."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<!-- بدائل مجانية تبقى موجودة كـ fallback -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 
-<!-- Favicon: hexagon with AL -->
 <link rel="icon" type="image/svg+xml"
 href='data:image/svg+xml;utf8,
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -19,69 +17,23 @@ href='data:image/svg+xml;utf8,
 </svg>'/>
 
 <style>
-/* ================== Self-hosted Fonts (لو عندك الترخيص/الملفات) ================== */
-/* Calibre — 400/500/600 + Italic */
-@font-face{
-  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-Regular.woff2') format('woff2'),
-                        url('fonts/Calibre/Calibre-Regular.woff') format('woff');
-  font-weight:400; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-Medium.woff2') format('woff2'),
-                        url('fonts/Calibre/Calibre-Medium.woff') format('woff');
-  font-weight:500; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-Semibold.woff2') format('woff2'),
-                        url('fonts/Calibre/Calibre-Semibold.woff') format('woff');
-  font-weight:600; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-RegularItalic.woff2') format('woff2'),
-                        url('fonts/Calibre/Calibre-RegularItalic.woff') format('woff');
-  font-weight:400; font-style:italic; font-display:swap;
-}
-@font-face{
-  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-MediumItalic.woff2') format('woff2'),
-                        url('fonts/Calibre/Calibre-MediumItalic.woff') format('woff');
-  font-weight:500; font-style:italic; font-display:swap;
-}
-@font-face{
-  font-family:'Calibre'; src:url('fonts/Calibre/Calibre-SemiboldItalic.woff2') format('woff2'),
-                        url('fonts/Calibre/Calibre-SemiboldItalic.woff') format('woff');
-  font-weight:600; font-style:italic; font-display:swap;
-}
+@font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-Regular.woff2') format('woff2'),url('fonts/Calibre/Calibre-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-Medium.woff2') format('woff2'),url('fonts/Calibre/Calibre-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-Semibold.woff2') format('woff2'),url('fonts/Calibre/Calibre-Semibold.woff') format('woff');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-RegularItalic.woff2') format('woff2'),url('fonts/Calibre/Calibre-RegularItalic.woff') format('woff');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-MediumItalic.woff2') format('woff2'),url('fonts/Calibre/Calibre-MediumItalic.woff') format('woff');font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-SemiboldItalic.woff2') format('woff2'),url('fonts/Calibre/Calibre-SemiboldItalic.woff') format('woff');font-weight:600;font-style:italic;font-display:swap}
+@font-face{font-family:'SF Mono';src:url('fonts/SFMono/SFMono-Regular.woff2') format('woff2'),url('fonts/SFMono/SFMono-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'SF Mono';src:url('fonts/SFMono/SFMono-Semibold.woff2') format('woff2'),url('fonts/SFMono/SFMono-Semibold.woff') format('woff');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'SF Mono';src:url('fonts/SFMono/SFMono-RegularItalic.woff2') format('woff2'),url('fonts/SFMono/SFMono-RegularItalic.woff') format('woff');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'SF Mono';src:url('fonts/SFMono/SFMono-SemiboldItalic.woff2') format('woff2'),url('fonts/SFMono/SFMono-SemiboldItalic.woff') format('woff');font-weight:600;font-style:italic;font-display:swap}
 
-/* SF Mono — 400/600 + Italic */
-@font-face{
-  font-family:'SF Mono'; src:url('fonts/SFMono/SFMono-Regular.woff2') format('woff2'),
-                         url('fonts/SFMono/SFMono-Regular.woff') format('woff');
-  font-weight:400; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:'SF Mono'; src:url('fonts/SFMono/SFMono-Semibold.woff2') format('woff2'),
-                         url('fonts/SFMono/SFMono-Semibold.woff') format('woff');
-  font-weight:600; font-style:normal; font-display:swap;
-}
-@font-face{
-  font-family:'SF Mono'; src:url('fonts/SFMono/SFMono-RegularItalic.woff2') format('woff2'),
-                         url('fonts/SFMono/SFMono-RegularItalic.woff') format('woff');
-  font-weight:400; font-style:italic; font-display:swap;
-}
-@font-face{
-  font-family:'SF Mono'; src:url('fonts/SFMono/SFMono-SemiboldItalic.woff2') format('woff2'),
-                         url('fonts/SFMono/SFMono-SemiboldItalic.woff') format('woff');
-  font-weight:600; font-style:italic; font-display:swap;
-}
-
-/* ================== Theme ================== */
 :root{
   --bg:#0a192f; --bg-2:#0b1c36;
   --text:#ccd6f6; --muted:#8892b0; --muted-2:#a8b2d1;
   --title:#e6f1ff; --accent:#64ffda; --card:#112240;
   --shadow:0 10px 30px -10px rgba(2,12,27,.7);
   --radius:6px; --radius-lg:8px; --w:1100px;
-  /* استخدم Calibre/SF Mono إن وُجدت؛ وإلا يسقط على Inter/Space Mono */
   --font:"Calibre","Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
   --mono:"SF Mono","Space Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --header-h:80px;
@@ -90,10 +42,9 @@ href='data:image/svg+xml;utf8,
 html{scroll-behavior:smooth}
 body{margin:0;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:var(--text);font-family:var(--font);line-height:1.7;overflow-x:hidden}
 a{color:inherit}
-
 .wrap{max-width:var(--w);margin:0 auto;padding:0 36px}
 
-/* ---------- Splash ---------- */
+/* Splash */
 #splash{position:fixed;inset:0;background:#0a192f;display:grid;place-items:center;z-index:9999;transition:opacity .4s ease}
 .hex{width:86px;height:86px}
 .hex svg{width:100%;height:100%}
@@ -101,11 +52,8 @@ a{color:inherit}
 .hex .stroke{stroke:var(--accent);stroke-width:6;fill:none;filter:drop-shadow(0 0 12px rgba(100,255,218,.35));stroke-dasharray:300;stroke-dashoffset:300;animation:dash 1.2s ease forwards .2s}
 @keyframes dash{to{stroke-dashoffset:0}}
 
-/* ---------- Header ---------- */
-header{
-  position:fixed;top:0;left:0;right:0;height:var(--header-h);backdrop-filter:blur(8px);
-  background:rgba(10,25,47,.6);border-bottom:1px solid rgba(100,255,218,.08);z-index:50
-}
+/* Header */
+header{position:fixed;top:0;left:0;right:0;height:var(--header-h);backdrop-filter:blur(8px);background:rgba(10,25,47,.6);border-bottom:1px solid rgba(100,255,218,.08);z-index:50}
 header .wrap{padding:0 28px}
 .nav{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;column-gap:48px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
@@ -118,7 +66,7 @@ nav a:hover{color:var(--accent)}
 .btn:hover{transform:translateY(-2px)}
 .resume{margin-left:8px}
 
-/* ---------- Side rails ---------- */
+/* Side rails */
 .side{position:fixed;bottom:0;left:24px;display:flex;flex-direction:column;align-items:center;gap:18px}
 .side a,.side span{color:var(--muted);transition:transform .15s,color .15s ease;text-decoration:none;display:inline-grid}
 .side a:hover,.side span:hover{color:var(--accent);transform:translateY(-2px)}
@@ -128,42 +76,26 @@ nav a:hover{color:var(--accent)}
 .icon{width:22px;height:22px;color:currentColor;opacity:.95}
 .fake{cursor:default;opacity:.85}
 
-/* ---------- Sections ---------- */
+/* Sections */
 section{padding:120px 0}
 .sec-title{display:flex;align-items:center;gap:12px;margin:0 0 30px 0}
-.sec-title .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.sec-title .num{font-family:var(--mono);letter-spacing:.08em;color:var(--accent);font-weight:700}
 .sec-title h2{margin:0;color:var(--title);font-size:clamp(22px,2.2vw,28px)}
 p{color:var(--muted)}
 
-/* ---------- Hero (لوسط الشاشة وتحت الهيدر) ---------- */
-.hero{
-  margin-top:var(--header-h);
-  padding:0;
-  min-height:calc(100vh - var(--header-h));
-  min-height:calc(100svh - var(--header-h));
-  min-height:calc(100dvh - var(--header-h));
-  min-height:calc((var(--vh, 1vh) * 100) - var(--header-h));
-  display:flex;align-items:center;
-}
+/* Hero */
+.hero{margin-top:var(--header-h);padding:0;min-height:calc(100vh - var(--header-h));min-height:calc(100svh - var(--header-h));min-height:calc(100dvh - var(--header-h));min-height:calc((var(--vh, 1vh) * 100) - var(--header-h));display:flex;align-items:center}
 .kicker{color:var(--accent);font-weight:900;margin:0 0 12px}
 h1.big{margin:0;color:var(--title);font-size:clamp(32px,6vw,64px);line-height:1.1}
 h2.big{margin:8px 0 14px;color:var(--muted-2);font-size:clamp(28px,5.2vw,56px);line-height:1.1}
 .hero .desc{max-width:740px}
 .hero .cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
-
-/* Say Hello effect */
-.btn-hello{
-  position:relative;display:inline-block;padding:14px 24px;border-radius:8px;
-  color:var(--accent);border:1px solid var(--accent);font-weight:900;text-decoration:none;background:transparent;
-}
-.btn-hello::after{
-  content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent);
-  opacity:.18;transform:translate(8px,8px);z-index:-1;transition:transform .2s ease,opacity .2s ease;
-}
+.btn-hello{position:relative;display:inline-block;padding:14px 24px;border-radius:8px;color:var(--accent);border:1px solid var(--accent);font-weight:900;text-decoration:none;background:transparent}
+.btn-hello::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent);opacity:.18;transform:translate(8px,8px);z-index:-1;transition:transform .2s ease,opacity .2s ease}
 .btn-hello:hover{color:#0a192f;background:var(--accent)}
 .btn-hello:hover::after{transform:translate(10px,10px);opacity:.26}
 
-/* ---------- About ---------- */
+/* About */
 .about{display:grid;grid-template-columns:3fr 2fr;gap:40px}
 @media (max-width:980px){.about{grid-template-columns:1fr}}
 .list{display:grid;grid-template-columns:repeat(2,minmax(140px,1fr));gap:6px 18px;margin-top:12px}
@@ -178,7 +110,7 @@ h2.big{margin:8px 0 14px;color:var(--muted-2);font-size:clamp(28px,5.2vw,56px);l
 .photo:hover::before{opacity:.18}
 .photo:hover::after{transform:translate(2px,2px)}
 
-/* ---------- Experience ---------- */
+/* Experience */
 .tabs{display:grid;grid-template-columns:220px 1fr;gap:24px}
 @media (max-width:880px){.tabs{grid-template-columns:1fr}}
 .tablist{display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.08)}
@@ -192,55 +124,29 @@ h2.big{margin:8px 0 14px;color:var(--muted-2);font-size:clamp(28px,5.2vw,56px);l
 .panel li{list-style:none;position:relative;padding-left:18px;margin:10px 0;color:var(--muted)}
 .panel li:before{content:"▹";position:absolute;left:0;color:var(--accent);font-weight:900}
 
-/* ---------- Work (featured projects) ---------- */
+/* Work */
 #work{padding-top:160px}
 .featured{display:grid;gap:120px}
-.proj{
-  display:grid;
-  grid-template-columns:repeat(12,minmax(0,1fr));
-  gap:10px;align-items:center;position:relative;
-  isolation:isolate;
-}
+.proj{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px;align-items:center;position:relative;isolation:isolate}
 .proj .thumb{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.06);z-index:1}
 .proj .thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s ease, filter .4s ease}
 .proj .thumb:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(100,255,218,.15), rgba(100,255,218,0));mix-blend-mode:screen;opacity:.0;transition:opacity .3s}
 .proj .thumb:hover img{transform:scale(1.04);filter:saturate(1.15) contrast(1.05)}
 .proj .thumb:hover:before{opacity:.9}
-
-/* إجبار الصورة والشرح على نفس الصف */
-.proj > .thumb,
-.proj > .content{grid-row:1}
-@media (max-width:980px){
-  .proj > .thumb,
-  .proj > .content{grid-row:auto}
-}
-
-/* Content */
+.proj > .thumb,.proj > .content{grid-row:1}
+@media (max-width:980px){.proj > .thumb,.proj > .content{grid-row:auto}}
 .content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:8px}
 .content .eyebrow{color:var(--accent);font-weight:900;margin:0}
 .content h3{margin:0 0 4px;color:var(--title)}
-.content .card{
-  background:rgba(17,34,64,.92);
-  border-radius:var(--radius);
-  padding:20px 22px;
-  border:1px solid rgba(255,255,255,.08);
-  color:var(--muted);
-  box-shadow:var(--shadow);
-  backdrop-filter:saturate(1.1);
-  max-width:540px;
-}
+.content .card{background:rgba(17,34,64,.92);border-radius:var(--radius);padding:20px 22px;border:1px solid rgba(255,255,255,.08);color:var(--muted);box-shadow:var(--shadow);backdrop-filter:saturate(1.1);max-width:540px}
 .tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
 .tech span{color:var(--muted);font-weight:800}
-
-/* توزيع الأعمدة + التراكب (معكوسين) */
 .proj:nth-child(odd) .content{grid-column:1/7;justify-self:start;text-align:left}
 .proj:nth-child(odd) .thumb{grid-column:7/13;justify-self:end}
 .proj:nth-child(odd) .content .card{margin-right:-200px}
-
 .proj:nth-child(even) .thumb{grid-column:1/9}
 .proj:nth-child(even) .content{grid-column:9/13;justify-self:end;text-align:right}
 .proj:nth-child(even) .content .card{margin-left:-200px}
-
 @media (max-width:980px){
   .proj{grid-template-columns:1fr}
   .proj .thumb,.proj .content{grid-column:1/-1}
@@ -248,23 +154,19 @@ h2.big{margin:8px 0 14px;color:var(--muted-2);font-size:clamp(28px,5.2vw,56px);l
   .content .card{margin:10px 0 0 0;max-width:none}
 }
 
-/* ---------- Testimonials ---------- */
+/* Testimonials */
 #testimonials{padding-top:180px}
 .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 @media (max-width:980px){.grid-cards{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:640px){.grid-cards{grid-template-columns:1fr}}
-.t-card{
-  background:var(--card);border:1px solid rgba(255,255,255,.08);
-  border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
-  position:relative;transition:transform .18s ease, box-shadow .18s ease
-}
+.t-card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);position:relative;transition:transform .18s ease, box-shadow .18s ease}
 .t-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px -10px rgba(2,12,27,.85)}
 .t-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--accent);color:var(--accent);font-weight:900}
 .t-role{color:var(--muted);font-weight:800;margin-top:-3px}
 .stars{color:#ffd166}
 
-/* ---------- Contact ---------- */
+/* Contact */
 #contact{padding-top:180px}
 .cta-center{text-align:center;max-width:none;margin:0 auto}
 .cta-center .kicker{margin-bottom:6px}
@@ -275,61 +177,39 @@ form.contact .full{grid-column:1/-1}
 input,textarea{background:#0c2244;border:1px solid rgba(255,255,255,.1);color:var(--text);border-radius:var(--radius);padding:12px 14px;outline:none}
 input:focus,textarea:focus{border-color:var(--accent)}
 textarea{min-height:160px;resize:vertical}
-
-/* Send button */
-.btn-accent{
-  position:relative;justify-self:center;margin-top:8px;background:transparent;border:1px solid var(--accent);
-  color:var(--accent);padding:12px 22px;border-radius:8px;font-weight:900;cursor:pointer;grid-column:1/-1
-}
-.btn-accent::after{
-  content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent);
-  opacity:.18;transform:translate(8px,8px);z-index:-1;transition:transform .2s ease,opacity .2s ease
-}
+.btn-accent{position:relative;justify-self:center;margin-top:8px;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:12px 22px;border-radius:8px;font-weight:900;cursor:pointer;grid-column:1/-1}
+.btn-accent::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent);opacity:.18;transform:translate(8px,8px);z-index:-1;transition:transform .2s ease,opacity .2s ease}
 .btn-accent:hover{color:#0a192f;background:var(--accent)}
 .btn-accent:hover::after{transform:translate(10px,10px);opacity:.26}
-
 #formMsg{min-height:22px}
 .success{color:var(--accent);font-weight:900}
 
-/* ---------- Footer ---------- */
+/* Footer */
 footer{padding:36px 0;text-align:center;color:var(--muted)}
 
-/* ========== Mobile Responsive Additions (ONLY) ========== */
+/* Responsive */
 @media (max-width:980px){
   .featured{gap:72px}
   #testimonials{padding-top:140px}
   #contact{padding-top:140px}
 }
-
-/* موبايل */
 @media (max-width:760px){
   :root{--header-h:64px;}
   .nav{column-gap:18px}
-  nav ul{
-    gap:14px;
-    font-size:14px;
-    overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch;
-    padding-bottom:6px; margin:0;
-  }
-
-  .side, .side.right{display:none}
+  nav ul{gap:14px;font-size:14px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:6px;margin:0}
+  .side,.side.right{display:none}
   .wrap{padding:0 20px}
   section{padding:90px 0}
   .sec-title{gap:10px}
   .brand-badge{width:34px;height:34px}
-
   .about{gap:22px}
   .photo{max-width:280px}
-
   .featured{gap:56px}
   .content .card{padding:16px 18px}
   .tech{gap:8px}
-
   .grid-cards{gap:14px}
   form.contact{grid-template-columns:1fr}
 }
-
-/* موبايل صغير جداً */
 @media (max-width:480px){
   section{padding:70px 0}
   .brand-badge{width:32px;height:32px}
@@ -339,36 +219,66 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
 </head>
 <body>
 
-<!-- Splash with AL -->
+<!-- Splash -->
 <div id="splash" aria-hidden="true">
   <div class="hex" aria-label="AL">
     <svg viewBox="0 0 100 100">
       <polygon class="stroke" points="50,4 92,28 92,72 50,96 8,72 8,28"/>
-      <text x="50" y="60" text-anchor="middle" class="letter" style="font: 900 42px var(--font)">AL</text>
+      <text x="50" y="60" text-anchor="middle" class="letter" style="font:900 42px var(--font)">AL</text>
     </svg>
   </div>
 </div>
 
-<!-- Rails -->
+<!-- Rails (UPDATED ICON STYLE + WHATSAPP) -->
 <div class="side" aria-hidden="true">
+  <!-- GitHub -->
   <a href="https://github.com/mdshwin555" target="_blank" rel="noopener" title="GitHub">
-    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.35.73-4.05-1.61-4.05-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.1-.76.08-.75.08-.75 1.21.09 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.79.42-1.32.76-1.62-2.67-.3-5.48-1.33-5.48-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.82 5.62-5.5 5.92.43 .37 .81 1.1 .81 2.22v3.29c0 .32 .21 .69 .82 .58A12 12 0 0 0 12 .5Z"/></svg>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 19c-5 1.5-5-2.5-7-3"/>
+      <path d="M15 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 4.77 5.07 5.07 0 0 0 18.73 1S17.55.65 14.82 2.48a13.38 13.38 0 0 0-7 0C5.09.65 3.91 1 3.91 1A5.07 5.07 0 0 0 3.82 4.77 5.44 5.44 0 0 0 2.33 8.5c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    </svg>
   </a>
+
+  <!-- LinkedIn -->
   <a href="https://www.linkedin.com/in/al-mouayad-shwin/" target="_blank" rel="noopener" title="LinkedIn">
-    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7 0h3.83v2.05h.05c.53-1 1.84-2.05 3.78-2.05 4.05 0 4.8 2.66 4.8 6.13V23h-4v-7.2c0-1.72-.03-3.93-2.4-3.93-2.4 0-2.77 1.87-2.77 3.81V23h-4V8z"/></svg>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect x="2" y="9" width="4" height="12"/>
+      <circle cx="4" cy="4" r="2"/>
+    </svg>
   </a>
+
+  <!-- WhatsApp (new) -->
+  <a href="https://wa.me/message/QTKEF4XKT46OK1" target="_blank" rel="noopener" title="WhatsApp">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- outer circle -->
+      <circle cx="12" cy="12" r="10"/>
+      <!-- simple handset shape -->
+      <path d="M15.5 14.5c-1.4 1.4-3.6 1.6-5.2.2l-1-1 1.3-1.3 1.2.7c.3.2.7.1.9-.1l.8-.8c.3-.3.3-.7.1-1l-.7-1.2 1.3-1.3 1 1c1.4 1.6 1.2 3.8-.2 5.2z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram (disabled) -->
   <span class="fake" title="Instagram">
-    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 12.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm5.5-8.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+    </svg>
   </span>
+
+  <!-- Facebook (disabled) -->
   <span class="fake" title="Facebook">
-    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l.5-4H13V7.5c0-1.1.3-1.8 1.9-1.8H17V2.1C16.4 2 15.2 2 14 2c-3 0-5 1.8-5 5.1V10H6v4h3v8h4z"/></svg>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </svg>
   </span>
 </div>
+
 <div class="side right" aria-hidden="true">
   <a href="mailto:eng.almouayad.shwin@gmail.com" style="text-decoration:none">eng.almouayad.shwin@gmail.com</a>
 </div>
 
-<!-- هيدر حسب آخر تعديل إلك (لوغو مزاح يسار + سبايسر قبل القائمة) -->
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top" style="margin-left:-200px;">
@@ -389,7 +299,6 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
 </header>
 
 <main id="top">
-  <!-- Hero -->
   <section class="wrap hero" id="home">
     <div>
       <p class="kicker">Hi, my name is</p>
@@ -405,13 +314,11 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
     </div>
   </section>
 
-  <!-- About -->
   <section class="wrap" id="about">
     <div class="sec-title"><span class="num">01.</span><h2>About Me</h2><div style="flex:1;height:1px;background:#233554"></div></div>
     <div class="about">
       <div>
-        <p>
-          I’m a software engineer who enjoys building things that live on the internet — from banking backends
+        <p>I’m a software engineer who enjoys building things that live on the internet — from banking backends
           and secure APIs to modern dashboards and mobile apps. Recently I’ve been focused on
           <b>Laravel/Filament</b> admin panels, <b>React</b> front-ends, and <b>Flutter</b> delivery apps.
         </p>
@@ -430,17 +337,14 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
     </div>
   </section>
 
-  <!-- Experience -->
   <section class="wrap" id="experience">
     <div class="sec-title"><span class="num">02.</span><h2>Where I’ve Worked</h2><div style="flex:1;height:1px;background:#233554"></div></div>
-
     <div class="tabs">
       <div class="tablist" role="tablist" aria-label="Companies">
         <button class="active" data-tab="tab1">National Islamic Bank</button>
         <button data-tab="tab2">ShamTech Solutions</button>
         <button data-tab="tab3">Damascus Digital Lab</button>
       </div>
-
       <div>
         <article id="tab1" class="panel active" role="tabpanel">
           <h3>Software Engineer <span style="color:var(--accent)">@ National Islamic Bank</span></h3>
@@ -451,7 +355,6 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
             <li>Developed Filament admin dashboards and e-voting for shareholders.</li>
           </ul>
         </article>
-
         <article id="tab2" class="panel" role="tabpanel">
           <h3>Full-Stack Developer <span style="color:var(--accent)">@ ShamTech Solutions</span></h3>
           <div class="meta">Aug 2023 — May 2024 · Damascus</div>
@@ -461,7 +364,6 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
             <li>Containerized services with Docker and sped up releases using GitHub Actions.</li>
           </ul>
         </article>
-
         <article id="tab3" class="panel" role="tabpanel">
           <h3>Mobile/Backend Engineer <span style="color:var(--accent)">@ Damascus Digital Lab</span></h3>
           <div class="meta">Jan 2022 — Jul 2023 · Damascus</div>
@@ -475,12 +377,9 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
     </div>
   </section>
 
-  <!-- Work -->
   <section class="wrap" id="work">
     <div class="sec-title"><span class="num">03.</span><h2>Some Things I’ve Built</h2><div style="flex:1;height:1px;background:#233554"></div></div>
-
     <div class="featured">
-      <!-- Project 1 -->
       <article class="proj">
         <a class="thumb" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/watani-one(2).png" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/watani-one(2).png" alt="Watani One"/>
@@ -493,7 +392,6 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
         </div>
       </article>
 
-      <!-- Project 2 -->
       <article class="proj">
         <a class="thumb" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/%D9%84%D9%82%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B4%D8%A9%202024-09-08%20120419%201%20(1).png" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/%D9%84%D9%82%D8%B7%D8%A9%20%D8%A7%D9%84%D8%B4%D8%A7%D8%B4%D8%A9%202024-09-08%20120419%201%20(1).png" alt="Digital Account Opening"/>
@@ -506,7 +404,6 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
         </div>
       </article>
 
-      <!-- Project 3 -->
       <article class="proj">
         <a class="thumb" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/Minimalist%20Website%20Launch%20Computer%20Mockup%20Instagram%20Post%20(1).png" target="_blank" rel="noopener">
           <img src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/Minimalist%20Website%20Launch%20Computer%20Mockup%20Instagram%20Post%20(1).png" alt="Kwickly"/>
@@ -519,11 +416,9 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
         </div>
       </article>
 
-      <!-- Project 4: Card Management Platform -->
       <article class="proj">
         <a class="thumb" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/image.png" target="_blank" rel="noopener">
-          <img loading="lazy" alt="Card Management Platform"
-               src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/image.png"/>
+          <img loading="lazy" alt="Card Management Platform" src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/image.png"/>
         </a>
         <div class="content">
           <div class="eyebrow">Featured Project</div>
@@ -533,11 +428,9 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
         </div>
       </article>
 
-      <!-- Project 5: MedTeam -->
       <article class="proj">
         <a class="thumb" href="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation%20(1).png?raw=true" target="_blank" rel="noopener">
-          <img loading="lazy" alt="MedTeam"
-               src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation%20(1).png?raw=true"/>
+          <img loading="lazy" alt="MedTeam" src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation%20(1).png?raw=true"/>
         </a>
         <div class="content">
           <div class="eyebrow">Featured Project</div>
@@ -547,11 +440,9 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
         </div>
       </article>
 
-      <!-- Project 6: HADERINE -->
       <article class="proj">
         <a class="thumb" href="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation.png?raw=true" target="_blank" rel="noopener">
-          <img loading="lazy" alt="HADERINE"
-               src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation.png?raw=true"/>
+          <img loading="lazy" alt="HADERINE" src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation.png?raw=true"/>
         </a>
         <div class="content">
           <div class="eyebrow">Featured Project</div>
@@ -563,41 +454,27 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
     </div>
   </section>
 
-  <!-- Testimonials -->
   <section class="wrap" id="testimonials">
     <div class="sec-title"><span class="num">04.</span><h2>Clients’ Feedback</h2><div style="flex:1;height:1px;background:#233554"></div></div>
-
     <div class="grid-cards">
       <article class="t-card">
-        <div class="t-head">
-          <div class="avatar">L</div>
-          <div><div style="font-weight:900">Laith Mansour</div><div class="t-role">CTO, Logistics</div></div>
-        </div>
+        <div class="t-head"><div class="avatar">L</div><div><div style="font-weight:900">Laith Mansour</div><div class="t-role">CTO, Logistics</div></div></div>
         <div class="stars">★★★★★</div>
         <p>Precise execution and fast responses. Turned our ideas into a stable product from the very first release.</p>
       </article>
-
       <article class="t-card">
-        <div class="t-head">
-          <div class="avatar">D</div>
-          <div><div style="font-weight:900">Dima Al-Haj</div><div class="t-role">Product Manager</div></div>
-        </div>
+        <div class="t-head"><div class="avatar">D</div><div><div style="font-weight:900">Dima Al-Haj</div><div class="t-role">Product Manager</div></div></div>
         <div class="stars">★★★★☆</div>
         <p>Smooth collaboration and clear communication across all stages. Loved the attention to details 😊.</p>
       </article>
-
       <article class="t-card">
-        <div class="t-head">
-          <div class="avatar">R</div>
-          <div><div style="font-weight:900">Rami Khader</div><div class="t-role">Startup Founder</div></div>
-        </div>
+        <div class="t-head"><div class="avatar">R</div><div><div style="font-weight:900">Rami Khader</div><div class="t-role">Startup Founder</div></div></div>
         <div class="stars">★★★★★</div>
         <p>Delivered ahead of schedule with higher-than-expected quality 🚀. Highly recommended.</p>
       </article>
     </div>
   </section>
 
-  <!-- Contact -->
   <section class="wrap" id="contact">
     <div class="cta-center">
       <p class="kicker"><span class="num" style="color:var(--accent);font-weight:900">05.</span> What’s Next?</p>
@@ -609,7 +486,6 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
         <input type="email" name="email" placeholder="Email address *" required/>
         <textarea name="message" placeholder="Your message *" class="full" required></textarea>
 
-        <!-- honeypots -->
         <input type="text" name="company" style="display:none"/>
         <input type="text" name="_honey" style="display:none"/>
 
@@ -623,22 +499,12 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
 <footer class="wrap">Designed &amp; Built by Al-Mouayad Shwin • © 2025</footer>
 
 <script>
-/* Splash fade */
-window.addEventListener('load',()=>setTimeout(()=>{
-  const s=document.getElementById('splash'); s.style.opacity='0'; setTimeout(()=>s.remove(),420);
-},900));
+window.addEventListener('load',()=>setTimeout(()=>{const s=document.getElementById('splash');s.style.opacity='0';setTimeout(()=>s.remove(),420);},900));
+function setVH(){document.documentElement.style.setProperty('--vh',(window.innerHeight*0.01)+'px');}
+setVH();window.addEventListener('resize',setVH);window.addEventListener('orientationchange',setVH);
 
-/* Fix 100vh on mobile: احسب --vh من الارتفاع الحقيقي */
-function setVH(){
-  document.documentElement.style.setProperty('--vh', (window.innerHeight*0.01)+'px');
-}
-setVH();
-window.addEventListener('resize', setVH);
-window.addEventListener('orientationchange', setVH);
-
-/* Tabs logic */
 document.querySelectorAll('.tablist button').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
+  btn.addEventListener('click',()=>{
     document.querySelectorAll('.tablist button').forEach(b=>b.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
     btn.classList.add('active');
@@ -646,28 +512,20 @@ document.querySelectorAll('.tablist button').forEach(btn=>{
   });
 });
 
-/* Contact AJAX (stay on page) */
-const form=document.getElementById('contactForm');
-const out=document.getElementById('formMsg');
-form?.addEventListener('submit', async (e)=>{
+const form=document.getElementById('contactForm');const out=document.getElementById('formMsg');
+form?.addEventListener('submit',async(e)=>{
   e.preventDefault();
   const fd=new FormData(form);
   if(fd.get('company')||fd.get('_honey')) return;
   const name=(fd.get('name')||'').toString().trim();
   const email=(fd.get('email')||'').toString().trim();
   const message=(fd.get('message')||'').toString().trim();
-  if(!name||!email||!message){ out.textContent='Please fill all required fields.'; return; }
+  if(!name||!email||!message){out.textContent='Please fill all required fields.';return;}
   out.textContent='Sending…';
   try{
     const r=await fetch('https://formsubmit.co/ajax/eng.almouayad.shwin@gmail.com',{
-      method:'POST',
-      headers:{'Accept':'application/json','Content-Type':'application/json'},
-      body:JSON.stringify({
-        name,email,message,
-        _subject:`Portfolio message — ${name}`,
-        _template:'table', _captcha:'false',
-        _autoresponse:'Thanks for reaching out! I will reply soon.'
-      })
+      method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},
+      body:JSON.stringify({name,email,message,_subject:`Portfolio message — ${name}`,_template:'table',_captcha:'false',_autoresponse:'Thanks for reaching out! I will reply soon.'})
     });
     if(!r.ok) throw 0;
     await r.json();
