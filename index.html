@@ -25,7 +25,6 @@ href='data:image/svg+xml;utf8,
 @font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-SemiboldItalic.woff2') format('woff2'),url('fonts/Calibre/Calibre-SemiboldItalic.woff') format('woff');font-weight:600;font-style:italic;font-display:swap}
 @font-face{font-family:'SF Mono';src:url('fonts/SFMono/SFMono-Regular.woff2') format('woff2'),url('fonts/SFMono/SFMono-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'SF Mono';src:url('fonts/SFMono/SFMono-Semibold.woff2') format('woff2'),url('fonts/SFMono/SFMono-Semibold.woff') format('woff');font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:'SF Mono';src:url('fonts/SFMono/SFMono-RegularItalic.woff2') format('woff2'),url('fonts/SFMono/SFMono-RegularItalic.woff') format('woff');font-weight:400;font-style:italic;font-display:swap}
 
 :root{
   --bg:#0a192f; --bg-2:#0b1c36;
@@ -38,8 +37,9 @@ href='data:image/svg+xml;utf8,
   --header-h:80px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:var(--text);font-family:var(--font);line-height:1.7;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:var(--text);font-family:var(--font);line-height:1.7;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
 a{color:inherit}
 .wrap{max-width:var(--w);margin:0 auto;padding:0 36px}
 
@@ -65,7 +65,7 @@ nav a:hover{color:var(--accent)}
 .btn:hover{transform:translateY(-2px)}
 .resume{margin-left:8px}
 
-/* Side rails (تظل ظاهرة على الديسكتوب) */
+/* Side rails (Desktop) */
 .side{position:fixed;bottom:0;left:24px;display:flex;flex-direction:column;align-items:center;gap:18px}
 .side a,.side span{color:var(--muted);transition:transform .15s,color .15s ease;text-decoration:none;display:inline-grid}
 .side a:hover,.side span:hover{color:var(--accent);transform:translateY(-2px)}
@@ -139,6 +139,7 @@ h2.big{margin:8px 0 14px;color:var(--muted-2);font-size:clamp(28px,5.2vw,56px);l
 .content h3{margin:0 0 4px;color:var(--title)}
 .content .card{background:rgba(17,34,64,.92);border-radius:var(--radius);padding:20px 22px;border:1px solid rgba(255,255,255,.08);color:var(--muted);box-shadow:var(--shadow);backdrop-filter:saturate(1.1);max-width:540px}
 .tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.tech span{color:var(--muted);font-weight:800}
 .proj:nth-child(odd) .content{grid-column:1/7;justify-self:start;text-align:left}
 .proj:nth-child(odd) .thumb{grid-column:7/13;justify-self:end}
 .proj:nth-child(odd) .content .card{margin-right:-200px}
@@ -185,7 +186,7 @@ textarea{min-height:160px;resize:vertical}
 /* Footer */
 footer{padding:36px 0;text-align:center;color:var(--muted)}
 
-/* Responsive (أساسياتك الأصلية) */
+/* Responsive base */
 @media (max-width:980px){
   .featured{gap:72px}
   #testimonials{padding-top:140px}
@@ -195,7 +196,7 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
   :root{--header-h:64px;}
   .nav{column-gap:18px}
   nav ul{gap:14px;font-size:14px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:6px;margin:0}
-  .side,.side.right{display:none} /* إخفاء السايد بالموبايل فقط */
+  .side,.side.right{display:none} /* hide side rails on mobile only */
   .wrap{padding:0 20px}
   section{padding:90px 0}
   .sec-title{gap:10px}
@@ -217,7 +218,7 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
 /* ===== Mobile-only Enhancements ===== */
 img{max-width:100%;height:auto}
 
-/* Hamburger + Drawer (Brittany v4) */
+/* Hamburger + Drawer */
 .hamburger{display:none;background:transparent;border:0;width:44px;height:44px;position:relative;cursor:pointer;margin-left:8px}
 .hamburger span,.hamburger::before,.hamburger::after{content:"";position:absolute;left:10px;right:10px;height:2px;background:var(--accent);transition:transform .25s ease,opacity .25s ease}
 .hamburger::before{top:14px}
@@ -240,17 +241,17 @@ body.nav-open .drawer{transform:translateX(0)}
 .drawer .resume-btn{margin-top:24px;display:inline-block;border:1px solid var(--accent);padding:12px 22px;border-radius:8px;text-decoration:none;font-weight:900;color:var(--accent)}
 .drawer-footer{height:24px}
 
-/* إظهار الهامبرغر وإخفاء منيو الهيدر بالموبايل فقط */
+/* show hamburger & hide header menu on mobile */
 @media (max-width:760px){
   header .wrap{padding:0 16px !important;}
-  .brand{margin-left:0 !important;}                          /* يرجع اللوغو */
+  .brand{margin-left:0 !important;}
   header .nav > span[aria-hidden="true"]{display:none !important;}
   header nav{margin-left:0 !important;}
   nav ul{display:none}
   .hamburger{display:inline-block}
 }
 
-/* مشاريع الموبايل */
+/* Projects on mobile */
 @media (max-width:760px){
   .proj{grid-template-columns:1fr !important;}
   .proj .thumb,.proj .content{grid-column:1/-1 !important;grid-row:auto !important;}
@@ -258,7 +259,7 @@ body.nav-open .drawer{transform:translateX(0)}
   .proj .content .card{margin:12px 0 0 0 !important;max-width:100% !important;}
 }
 
-/* تبويبات الشركات بالموبايل (جنب بعض + سكرول) */
+/* Experience tabs on mobile (horizontal scroll) */
 @media (max-width:760px){
   .tabs{grid-template-columns:1fr !important;}
   .tablist{flex-direction:row !important;overflow-x:auto;border-left:0;border-bottom:1px solid rgba(255,255,255,.08);gap:0}
@@ -266,14 +267,14 @@ body.nav-open .drawer{transform:translateX(0)}
   .tablist button.active{border-bottom-color:var(--accent)}
 }
 
-/* أيقونات السوشال تحت زر الإرسال — موبايل فقط */
+/* contact social — mobile only (now contains ALL icons incl. IG & FB) */
 .contact-social{display:none}
 @media (max-width:760px){
   .contact-social{display:flex;justify-content:center;gap:18px;margin-top:24px}
-  .contact-social a{color:var(--muted);text-decoration:none}
-  .contact-social a:hover{color:var(--accent)}
+  .contact-social a,.contact-social span{color:var(--muted);text-decoration:none}
+  .contact-social a:hover,.contact-social span:hover{color:var(--accent)}
 }
-footer{margin-top:16px} /* مسافة خفيفة قبل الحقوق */
+footer{margin-top:16px}
 </style>
 </head>
 <body>
@@ -288,25 +289,46 @@ footer{margin-top:16px} /* مسافة خفيفة قبل الحقوق */
   </div>
 </div>
 
-<!-- Rails: تبقَ للأجهزة الكبيرة -->
+<!-- Side rails — Desktop -->
 <div class="side" aria-hidden="true">
+  <!-- GitHub -->
   <a href="https://github.com/mdshwin555" target="_blank" rel="noopener" title="GitHub">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M9 19c-5 1.5-5-2.5-7-3"/>
       <path d="M15 22v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 19 4.77 5.07 5.07 0 0 0 18.73 1S17.55.65 14.82 2.48a13.38 13.38 0 0 0-7 0C5.09.65 3.91 1 3.91 1A5.07 5.07 0 0 0 3.82 4.77 5.44 5.44 0 0 0 2.33 8.5c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
     </svg>
   </a>
+
+  <!-- LinkedIn -->
   <a href="https://www.linkedin.com/in/al-mouayad-shwin/" target="_blank" rel="noopener" title="LinkedIn">
     <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
       <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
     </svg>
   </a>
+
+  <!-- WhatsApp (official path, same as قبل) -->
   <a href="https://wa.me/message/QTKEF4XKT46OK1" target="_blank" rel="noopener" title="WhatsApp">
-    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.29-.145-1.7-.838-1.963-.933-.262-.096-.454-.145-.645.145-.19.29-.741.933-.909 1.126-.167.194-.335.218-.624.073-.29-.145-1.225-.451-2.334-1.439-.862-.768-1.443-1.722-1.61-2.012-.167-.29-.018-.446.127-.591.131-.131.29-.335.435-.503.145-.167.194-.29.29-.483.096-.194.048-.363-.024-.508-.073-.145-.645-1.556-.883-2.129-.232-.558-.468-.481-.645-.49-.167-.009-.363-.011-.558-.011-.194 0-.508.073-.773.363-.262.29-1.01.985-1.01 2.401 0 1.416 1.035 2.787 1.178 2.983.145.194 2.04 3.116 4.94 4.366.691.298 1.232.476 1.653.611.694.221 1.327.19 1.827.115.557-.083 1.7-.694 1.941-1.362.24-.668.24-1.24.167-1.362-.073-.121-.262-.194-.551-.338zm-5.421 6.356h-.003a9.87 9.87 0 0 1-5.031-1.366l-.361-.214-3.741.982.999-3.648-.235-.374a9.9 9.9 0 0 1-1.518-5.297c.001-5.45 4.436-9.884 9.888-9.884z"/>
+    <svg class="icon" viewBox="0 0 24 24" role="img" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.29-.145-1.7-.838-1.963-.933-.262-.096-.454-.145-.645.145-.19.29-.741.933-.909 1.126-.167.194-.335.218-.624.073-.29-.145-1.225-.451-2.334-1.439-.862-.768-1.443-1.722-1.61-2.012-.167-.29-.018-.446.127-.591.131-.131.29-.335.435-.503.145-.167.194-.29.29-.483.096-.194.048-.363-.024-.508-.073-.145-.645-1.556-.883-2.129-.232-.558-.468-.481-.645-.49-.167-.009-.363-.011-.558-.011-.194 0-.508.073-.773.363-.262.29-1.01.985-1.01 2.401 0 1.416 1.035 2.787 1.178 2.983.145.194 2.04 3.116 4.94 4.366.691.298 1.232.476 1.653.611.694.221 1.327.19 1.827.115.557-.083 1.7-.694 1.941-1.362.24-.668.24-1.24.167-1.362-.073-.121-.262-.194-.551-.338zm-5.421 6.356h-.003a9.87 9.87 0 0 1-5.031-1.366l-.361-.214-3.741.982.999-3.648-.235-.374a9.9 9.9 0 0 1-1.518-5.297c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.9 6.994c-.003 5.45-4.438 9.884-9.887 9.884z"/>
     </svg>
   </a>
+
+  <!-- Instagram (disabled) -->
+  <span class="fake" title="Instagram">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+    </svg>
+  </span>
+
+  <!-- Facebook (disabled) -->
+  <span class="fake" title="Facebook">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+    </svg>
+  </span>
 </div>
 
 <div class="side right" aria-hidden="true">
@@ -544,7 +566,7 @@ footer{margin-top:16px} /* مسافة خفيفة قبل الحقوق */
         <div id="formMsg"></div>
       </form>
 
-      <!-- Social icons: تظهر فقط بالموبايل -->
+      <!-- Social icons — Mobile only (ALL icons incl. IG & FB) -->
       <div class="contact-social" aria-label="Social links">
         <a href="https://github.com/mdshwin555" target="_blank" rel="noopener" title="GitHub">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -558,10 +580,22 @@ footer{margin-top:16px} /* مسافة خفيفة قبل الحقوق */
           </svg>
         </a>
         <a href="https://wa.me/message/QTKEF4XKT46OK1" target="_blank" rel="noopener" title="WhatsApp">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24" role="img" fill="currentColor" aria-hidden="true">
             <path d="M17.472 14.382c-.29-.145-1.7-.838-1.963-.933-.262-.096-.454-.145-.645.145-.19.29-.741.933-.909 1.126-.167.194-.335.218-.624.073-.29-.145-1.225-.451-2.334-1.439-.862-.768-1.443-1.722-1.61-2.012-.167-.29-.018-.446.127-.591.131-.131.29-.335.435-.503.145-.167.194-.29.29-.483.096-.194.048-.363-.024-.508-.073-.145-.645-1.556-.883-2.129-.232-.558-.468-.481-.645-.49-.167-.009-.363-.011-.558-.011-.194 0-.508.073-.773.363-.262.29-1.01.985-1.01 2.401 0 1.416 1.035 2.787 1.178 2.983.145.194 2.04 3.116 4.94 4.366z"/>
           </svg>
         </a>
+        <span class="fake" title="Instagram">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+          </svg>
+        </span>
+        <span class="fake" title="Facebook">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </span>
       </div>
     </div>
   </section>
