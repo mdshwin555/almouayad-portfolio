@@ -217,15 +217,28 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
 
 /* ===================== */
 /* EXTRA MOBILE ENHANCES */
-/* (added without removing anything) */
 /* ===================== */
 img{max-width:100%;height:auto}
+
+/* --- Fix header + show logo + hamburger menu --- */
+.hamburger{display:none;background:transparent;border:0;width:40px;height:40px;position:relative;cursor:pointer}
+.hamburger span,.hamburger::before,.hamburger::after{content:"";position:absolute;left:8px;right:8px;height:2px;background:var(--accent);transition:transform .2s ease,opacity .2s ease}
+.hamburger span{top:19px}
+.hamburger::before{top:12px}
+.hamburger::after{top:26px}
+header.menu-open .hamburger::before{transform:translateY(7px) rotate(45deg)}
+header.menu-open .hamburger::after{transform:translateY(-7px) rotate(-45deg)}
+header.menu-open .hamburger span{opacity:0}
+
 @media (max-width:760px){
   header .wrap{padding:0 16px !important;}
-  .brand{margin-left:0 !important;}                    /* overrides inline -200px */
+  .brand{margin-left:0 !important;} /* override inline -200px */
   header .nav > span[aria-hidden="true"]{display:none !important;} /* hide spacer */
   header nav{margin-left:0 !important;}
-  nav ul{gap:12px !important;}
+  .hamburger{display:inline-block}
+  /* dropdown */
+  nav ul{display:none;position:absolute;top:var(--header-h);left:0;right:0;flex-direction:column;gap:12px;background:rgba(10,25,47,.96);padding:14px 20px;border-bottom:1px solid rgba(100,255,218,.1);box-shadow:0 16px 30px rgba(2,12,27,.6);z-index:200}
+  header.menu-open nav ul{display:flex}
   .btn.resume{padding:8px 10px}
   h1.big{font-size:clamp(28px,9vw,42px) !important;}
   h2.big{font-size:clamp(22px,7.5vw,32px) !important;}
@@ -239,7 +252,11 @@ img{max-width:100%;height:auto}
   .tablist button.active{border-bottom-color:var(--accent)}
   .featured{gap:40px !important;}
   .proj{grid-template-columns:1fr !important;}
-  .proj .content .card{margin:10px 0 0 0 !important;max-width:100% !important;}
+  .proj .thumb,.proj .content{grid-column:1/-1 !important;grid-row:auto !important;}
+  .proj .content{justify-self:stretch !important;text-align:left !important;}
+  .proj:nth-child(even) .content,
+  .proj:nth-child(odd) .content{justify-self:stretch !important;text-align:left !important;}
+  .proj .content .card{margin:12px 0 0 0 !important;max-width:100% !important;}
   .grid-cards{grid-template-columns:1fr !important;gap:12px !important;}
   form.contact{grid-template-columns:1fr !important;}
   .btn-accent{width:100%}
@@ -327,6 +344,8 @@ img{max-width:100%;height:auto}
         <li><a class="btn resume" href="Al-Mouayad Shwin.-.CV.pdf" target="_blank" rel="noopener">Resume</a></li>
       </ul>
     </nav>
+    <!-- Hamburger button (مضاف) -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
   </div>
 </header>
 
@@ -566,6 +585,20 @@ form?.addEventListener('submit',async(e)=>{
   }catch{
     out.textContent='Could not send from file://. Please open this page via hosting (GitHub Pages/Netlify) or a local server.';
   }
+});
+
+/* Hamburger toggle (مضاف) */
+const hdr=document.querySelector('header');
+const burger=document.getElementById('hamburger');
+burger?.addEventListener('click',()=>{
+  const open=hdr.classList.toggle('menu-open');
+  burger.setAttribute('aria-expanded',open?'true':'false');
+});
+document.querySelectorAll('header nav a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    hdr.classList.remove('menu-open');
+    burger?.setAttribute('aria-expanded','false');
+  });
 });
 </script>
 </body>
