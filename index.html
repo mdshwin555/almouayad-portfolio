@@ -140,7 +140,6 @@ h2.big{margin:8px 0 14px;color:var(--muted-2);font-size:clamp(28px,5.2vw,56px);l
 .content h3{margin:0 0 4px;color:var(--title)}
 .content .card{background:rgba(17,34,64,.92);border-radius:var(--radius);padding:20px 22px;border:1px solid rgba(255,255,255,.08);color:var(--muted);box-shadow:var(--shadow);backdrop-filter:saturate(1.1);max-width:540px}
 .tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
-.tech span{color:var(--muted);font-weight:800}
 .proj:nth-child(odd) .content{grid-column:1/7;justify-self:start;text-align:left}
 .proj:nth-child(odd) .thumb{grid-column:7/13;justify-self:end}
 .proj:nth-child(odd) .content .card{margin-right:-200px}
@@ -214,6 +213,37 @@ footer{padding:36px 0;text-align:center;color:var(--muted)}
   section{padding:70px 0}
   .brand-badge{width:32px;height:32px}
   .cta-center > p{padding:0 4px}
+}
+
+/* ===================== */
+/* EXTRA MOBILE ENHANCES */
+/* (added without removing anything) */
+/* ===================== */
+img{max-width:100%;height:auto}
+@media (max-width:760px){
+  header .wrap{padding:0 16px !important;}
+  .brand{margin-left:0 !important;}                    /* overrides inline -200px */
+  header .nav > span[aria-hidden="true"]{display:none !important;} /* hide spacer */
+  header nav{margin-left:0 !important;}
+  nav ul{gap:12px !important;}
+  .btn.resume{padding:8px 10px}
+  h1.big{font-size:clamp(28px,9vw,42px) !important;}
+  h2.big{font-size:clamp(22px,7.5vw,32px) !important;}
+  .hero .desc{font-size:16px}
+  .btn-hello{width:100%;text-align:center}
+  .about{grid-template-columns:1fr !important;gap:20px !important;}
+  .photo{max-width:100% !important;}
+  .tabs{grid-template-columns:1fr !important;}
+  .tablist{flex-direction:row !important;overflow-x:auto;border-left:0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .tablist button{border-left:0;border-bottom:2px solid transparent}
+  .tablist button.active{border-bottom-color:var(--accent)}
+  .featured{gap:40px !important;}
+  .proj{grid-template-columns:1fr !important;}
+  .proj .content .card{margin:10px 0 0 0 !important;max-width:100% !important;}
+  .grid-cards{grid-template-columns:1fr !important;gap:12px !important;}
+  form.contact{grid-template-columns:1fr !important;}
+  .btn-accent{width:100%}
+  .cta-center h2{font-size:clamp(22px,7vw,32px) !important;}
 }
 </style>
 </head>
@@ -540,5 +570,3 @@ form?.addEventListener('submit',async(e)=>{
 </script>
 </body>
 </html>
-
-
