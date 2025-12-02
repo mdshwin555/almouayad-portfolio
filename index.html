@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 
-<!-- Favicon -->
 <link rel="icon" type="image/svg+xml"
 href='data:image/svg+xml;utf8,
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -18,7 +17,6 @@ href='data:image/svg+xml;utf8,
 </svg>'/>
 
 <style>
-/* --- Font Faces --- */
 @font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-Regular.woff2') format('woff2'),url('fonts/Calibre/Calibre-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-Medium.woff2') format('woff2'),url('fonts/Calibre/Calibre-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-Semibold.woff2') format('woff2'),url('fonts/Calibre/Calibre-Semibold.woff') format('woff');font-weight:600;font-style:normal;font-display:swap}
@@ -55,39 +53,25 @@ a{color:inherit}
 
 /* Header */
 header{position:fixed;top:0;left:0;right:0;height:var(--header-h);backdrop-filter:blur(8px);background:rgba(10,25,47,.6);border-bottom:1px solid rgba(100,255,218,.08);z-index:200}
-header .wrap{padding:0 28px;height:100%;display:flex;align-items:center;justify-content:space-between}
-.nav{display:flex;align-items:center;justify-content:space-between;width:100%}
+header .wrap{padding:0 28px}
+.nav{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;column-gap:48px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand-badge{width:36px;height:36px;display:grid;place-items:center;border-radius:6px;border:2px solid var(--accent);color:var(--accent);font-weight:900;font-size:16px}
-
-/* Navigation Links */
+.brand-badge{width:36px;height:36px;display:grid;place-items:center;border-radius:6px;border:2px solid var(--accent);color:var(--accent);font-weight:900}
 nav ul{margin:0;padding:0;display:flex;gap:26px;list-style:none;align-items:center}
-nav a{color:var(--muted);text-decoration:none;font-weight:800;transition:color .15s ease;font-size:13px}
-nav a .num{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--accent);margin-right:6px}
+nav a{color:var(--muted);text-decoration:none;font-weight:800;transition:color .15s ease}
+nav a .num{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:.08em;color:var(--accent);margin-right:6px}
 nav a:hover{color:var(--accent)}
-
-/* Resume Button in Header */
-.resume-desktop {
-    margin-left: 24px;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    padding: 8px 16px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    font-family: var(--mono);
-    font-size: 13px;
-    transition: background 0.2s;
-    display: inline-block;
-}
-.resume-desktop:hover { background: rgba(100,255,218,0.1); }
+.btn{border:1px solid var(--accent);color:var(--accent);padding:10px 14px;border-radius:var(--radius);text-decoration:none;font-weight:900;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.resume{margin-left:8px}
 
 /* Side rails (Desktop) */
-.side{position:fixed;bottom:0;left:24px;display:flex;flex-direction:column;align-items:center;gap:18px;z-index:100}
+.side{position:fixed;bottom:0;left:24px;display:flex;flex-direction:column;align-items:center;gap:18px}
 .side a,.side span{color:var(--muted);transition:transform .15s,color .15s ease;text-decoration:none;display:inline-grid}
 .side a:hover,.side span:hover{color:var(--accent);transform:translateY(-2px)}
 .side:after{content:"";width:1px;height:140px;background:var(--muted);opacity:.35;margin-top:10px}
 .side.right{left:auto;right:24px}
-.side.right a{writing-mode:vertical-rl;letter-spacing:1px;text-decoration:none;font-family:var(--mono);font-size:12px}
+.side.right a{writing-mode:vertical-rl;letter-spacing:1px;text-decoration:none}
 .icon{width:22px;height:22px;color:currentColor;opacity:.95}
 .fake{cursor:default;opacity:.85}
 
@@ -99,13 +83,13 @@ section{padding:120px 0}
 p{color:var(--muted)}
 
 /* Hero */
-.hero{margin-top:var(--header-h);padding:0;min-height:calc(100vh - var(--header-h));display:flex;align-items:center}
-.kicker{color:var(--accent);font-weight:900;margin:0 0 12px;font-family:var(--mono)}
+.hero{margin-top:var(--header-h);padding:0;min-height:calc(100vh - var(--header-h));min-height:calc(100svh - var(--header-h));min-height:calc(100dvh - var(--header-h));min-height:calc((var(--vh, 1vh) * 100) - var(--header-h));display:flex;align-items:center}
+.kicker{color:var(--accent);font-weight:900;margin:0 0 12px}
 h1.big{margin:0;color:var(--title);font-size:clamp(32px,6vw,64px);line-height:1.1}
 h2.big{margin:8px 0 14px;color:var(--muted-2);font-size:clamp(28px,5.2vw,56px);line-height:1.1}
 .hero .desc{max-width:740px}
 .hero .cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
-.btn-hello{position:relative;display:inline-block;padding:14px 24px;border-radius:8px;color:var(--accent);border:1px solid var(--accent);font-weight:900;text-decoration:none;background:transparent;font-family:var(--mono);font-size:14px}
+.btn-hello{position:relative;display:inline-block;padding:14px 24px;border-radius:8px;color:var(--accent);border:1px solid var(--accent);font-weight:900;text-decoration:none;background:transparent}
 .btn-hello::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent);opacity:.18;transform:translate(8px,8px);z-index:-1;transition:transform .2s ease,opacity .2s ease}
 .btn-hello:hover{color:#0a192f;background:var(--accent)}
 .btn-hello:hover::after{transform:translate(10px,10px);opacity:.26}
@@ -113,7 +97,7 @@ h2.big{margin:8px 0 14px;color:var(--muted-2);font-size:clamp(28px,5.2vw,56px);l
 /* About */
 .about{display:grid;grid-template-columns:3fr 2fr;gap:40px}
 @media (max-width:980px){.about{grid-template-columns:1fr}}
-.list{display:grid;grid-template-columns:repeat(2,minmax(140px,1fr));gap:6px 18px;margin-top:12px;font-family:var(--mono);font-size:13px}
+.list{display:grid;grid-template-columns:repeat(2,minmax(140px,1fr));gap:6px 18px;margin-top:12px}
 .list li{list-style:none;position:relative;padding-left:18px;color:var(--muted)}
 .list li:before{content:"▹";position:absolute;left:0;color:var(--accent);font-weight:900}
 
@@ -129,15 +113,14 @@ photo::after{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px
 .tabs{display:grid;grid-template-columns:220px 1fr;gap:24px}
 @media (max-width:880px){.tabs{grid-template-columns:1fr}}
 .tablist{display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.08)}
-.tablist button{all:unset;cursor:pointer;padding:12px 16px;border-left:2px solid transparent;color:var(--muted);font-weight:800;font-family:var(--mono);font-size:13px;transition:all .2s}
-.tablist button:hover{background:rgba(17,34,64,0.5);color:var(--accent)}
+.tablist button{all:unset;cursor:pointer;padding:12px 16px;border-left:2px solid transparent;color:var(--muted);font-weight:800}
 .tablist button.active{border-color:var(--accent);color:var(--accent);background:rgba(100,255,218,.08)}
 .panel{display:none}
 .panel.active{display:block}
-.panel h3{margin:0 0 6px;font-size:20px;font-weight:500}
-.panel .meta{color:var(--muted);font-family:var(--mono);font-size:13px;margin-bottom:20px}
+.panel h3{margin:0 0 6px}
+.panel .meta{color:var(--muted)}
 .panel ul{margin:12px 0 0 0;padding:0}
-.panel li{list-style:none;position:relative;padding-left:20px;margin:10px 0;color:var(--muted)}
+.panel li{list-style:none;position:relative;padding-left:18px;margin:10px 0;color:var(--muted)}
 .panel li:before{content:"▹";position:absolute;left:0;color:var(--accent);font-weight:900}
 
 /* Work */
@@ -152,43 +135,43 @@ photo::after{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px
 .proj > .thumb,.proj > .content{grid-row:1}
 @media (max-width:980px){.proj > .thumb,.proj > .content{grid-row:auto}}
 .content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:8px}
-.content .eyebrow{color:var(--accent);font-weight:900;margin:0;font-family:var(--mono);font-size:13px}
-.content h3{margin:0 0 4px;color:var(--title);font-size:24px}
+.content .eyebrow{color:var(--accent);font-weight:900;margin:0}
+.content h3{margin:0 0 4px;color:var(--title)}
 .content .card{background:rgba(17,34,64,.92);border-radius:var(--radius);padding:20px 22px;border:1px solid rgba(255,255,255,.08);color:var(--muted);box-shadow:var(--shadow);backdrop-filter:saturate(1.1);max-width:540px}
-
-/* Enhanced Project Meta (With Flags) */
-.proj-status-bar{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
-.status-pill{font-family:var(--mono);font-size:12px;background:rgba(100,255,218,0.1);color:var(--accent);padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:6px;border:1px solid rgba(100,255,218,0.2)}
-.status-pill.location{background:rgba(255,255,255,0.05);color:var(--title);border-color:rgba(255,255,255,0.1)}
-/* Force Emoji Font for Flags */
-.emoji-flag { font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif; font-style: normal; margin-right: 4px; font-size: 14px; }
-
 .tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
-.tech span{color:var(--muted);font-weight:800;font-family:var(--mono);font-size:13px}
-
-/* Store Buttons */
-.store-links{display:flex;gap:10px;margin-top:16px}
-.store-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--muted);border-radius:4px;color:var(--title);font-size:12px;font-weight:700;text-decoration:none;transition:all .2s ease;font-family:var(--mono)}
-.store-btn svg{width:16px;height:16px;fill:currentColor}
-.store-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-
+.tech span{color:var(--muted);font-weight:800}
 .proj:nth-child(odd) .content{grid-column:1/7;justify-self:start;text-align:left}
 .proj:nth-child(odd) .thumb{grid-column:7/13;justify-self:end}
 .proj:nth-child(odd) .content .card{margin-right:-200px}
 .proj:nth-child(even) .thumb{grid-column:1/9}
 .proj:nth-child(even) .content{grid-column:9/13;justify-self:end;text-align:right}
 .proj:nth-child(even) .content .card{margin-left:-200px}
-/* Align meta/store buttons based on side */
+@media (max-width:980px){
+  .proj{grid-template-columns:1fr}
+  .proj .thumb,.proj .content{grid-column:1/-1}
+  .content{text-align:left}
+  .content .card{margin:10px 0 0 0;max-width:none}
+}
+
+/* Enhanced Project Meta (New) */
+.proj-status-bar{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.status-pill{font-family:var(--mono);font-size:12px;background:rgba(100,255,218,0.1);color:var(--accent);padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:6px;border:1px solid rgba(100,255,218,0.2)}
+.status-pill.location{background:rgba(255,255,255,0.05);color:var(--title);border-color:rgba(255,255,255,0.1)}
+/* Force Emoji Font for Flags */
+.emoji-flag { font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif; font-style: normal; margin-right: 4px; font-size: 14px; }
+
+.store-links{display:flex;gap:10px;margin-top:16px}
+.store-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--muted);border-radius:4px;color:var(--title);font-size:12px;font-weight:700;text-decoration:none;transition:all .2s ease}
+.store-btn svg{width:16px;height:16px;fill:currentColor}
+.store-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+/* Alignment fixes */
 .proj:nth-child(odd) .proj-status-bar, .proj:nth-child(odd) .store-links{justify-content:flex-start}
 .proj:nth-child(even) .proj-status-bar, .proj:nth-child(even) .store-links{justify-content:flex-end}
 
 @media (max-width:980px){
-  .proj{grid-template-columns:1fr}
-  .proj .thumb,.proj .content{grid-column:1/-1}
-  .content{text-align:left}
-  .content .card{margin:10px 0 0 0;max-width:none}
-  .proj:nth-child(even) .content{text-align:left}
-  .proj:nth-child(even) .proj-status-bar, .proj:nth-child(even) .store-links{justify-content:flex-start}
+  .proj:nth-child(even) .content{text-align:left}
+  .proj:nth-child(even) .proj-status-bar, .proj:nth-child(even) .store-links{justify-content:flex-start}
 }
 
 /* Pricing Section */
@@ -230,46 +213,43 @@ form.contact .full{grid-column:1/-1}
 input,textarea{background:#0c2244;border:1px solid rgba(255,255,255,.1);color:var(--text);border-radius:var(--radius);padding:12px 14px;outline:none}
 input:focus,textarea:focus{border-color:var(--accent)}
 textarea{min-height:160px;resize:vertical}
-
-/* Send Button Style */
-.btn-accent{position:relative;justify-self:center;margin-top:8px;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:14px 28px;border-radius:8px;font-weight:900;cursor:pointer;grid-column:1/-1;font-family:var(--mono);font-size:14px;transition:all 0.2s}
+.btn-accent{position:relative;justify-self:center;margin-top:8px;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:12px 22px;border-radius:8px;font-weight:900;cursor:pointer;grid-column:1/-1}
 .btn-accent::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent);opacity:.18;transform:translate(8px,8px);z-index:-1;transition:transform .2s ease,opacity .2s ease}
 .btn-accent:hover{color:#0a192f;background:var(--accent)}
 .btn-accent:hover::after{transform:translate(10px,10px);opacity:.26}
-
-#formMsg{min-height:22px;grid-column:1/-1;text-align:center;margin-top:12px}
+#formMsg{min-height:22px;grid-column:1/-1;text-align:center}
 .success{color:var(--accent);font-weight:900}
 
 /* Footer */
-footer{padding:36px 0;text-align:center;color:var(--muted);font-family:var(--mono);font-size:12px}
+footer{padding:36px 0;text-align:center;color:var(--muted)}
 
 /* Responsive base */
 @media (max-width:980px){
-  .featured{gap:72px}
-  #testimonials{padding-top:140px}
-  #contact{padding-top:140px}
+  .featured{gap:72px}
+  #testimonials{padding-top:140px}
+  #contact{padding-top:140px}
 }
 @media (max-width:760px){
-  :root{--header-h:64px;}
-  .nav{column-gap:18px}
-  nav ul{gap:14px;font-size:14px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:6px;margin:0}
-  .side,.side.right{display:none} /* hide side rails on mobile only */
-  .wrap{padding:0 20px}
-  section{padding:90px 0}
-  .sec-title{gap:10px}
-  .brand-badge{width:34px;height:34px}
-  .about{gap:22px}
-  .photo{max-width:280px}
-  .featured{gap:56px}
-  .content .card{padding:16px 18px}
-  .tech{gap:8px}
-  .grid-cards{gap:14px}
-  form.contact{grid-template-columns:1fr}
+  :root{--header-h:64px;}
+  .nav{column-gap:18px}
+  nav ul{gap:14px;font-size:14px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding-bottom:6px;margin:0}
+  .side,.side.right{display:none} /* hide side rails on mobile only */
+  .wrap{padding:0 20px}
+  section{padding:90px 0}
+  .sec-title{gap:10px}
+  .brand-badge{width:34px;height:34px}
+  .about{gap:22px}
+  .photo{max-width:280px}
+  .featured{gap:56px}
+  .content .card{padding:16px 18px}
+  .tech{gap:8px}
+  .grid-cards{gap:14px}
+  form.contact{grid-template-columns:1fr}
 }
 @media (max-width:480px){
-  section{padding:70px 0}
-  .brand-badge{width:32px;height:32px}
-  .cta-center > p{padding:0 4px}
+  section{padding:70px 0}
+  .brand-badge{width:32px;height:32px}
+  .cta-center > p{padding:0 4px}
 }
 
 /* ===== Mobile-only Enhancements ===== */
@@ -300,37 +280,37 @@ body.nav-open .drawer{transform:translateX(0)}
 
 /* show hamburger & hide header menu on mobile */
 @media (max-width:760px){
-  header .wrap{padding:0 16px !important;}
-  .brand{margin-left:0 !important;}
-  header .nav > span[aria-hidden="true"]{display:none !important;}
-  header nav{margin-left:0 !important;}
-  nav ul{display:none}
-  .hamburger{display:inline-block}
-  .resume-desktop {display: none !important;} /* Hide desktop resume on mobile */
+  header .wrap{padding:0 16px !important;}
+  .brand{margin-left:0 !important;}
+  header .nav > span[aria-hidden="true"]{display:none !important;}
+  header nav{margin-left:0 !important;}
+  nav ul{display:none}
+  .hamburger{display:inline-block}
 }
 
-/* AI Polish Button */
-.ai-polish-btn {
-    background: linear-gradient(135deg, #64ffda 0%, #48c9b0 100%);
-    border: none;
-    border-radius: 4px;
-    padding: 6px 12px;
-    font-size: 11px;
-    font-weight: 700;
-    color: #0a192f;
-    cursor: pointer;
-    margin-bottom: 8px;
-    align-self: flex-end;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: transform 0.2s, opacity 0.2s;
-    font-family: var(--mono);
-    grid-column: 1/-1;
+/* Projects on mobile */
+@media (max-width:760px){
+  .proj{grid-template-columns:1fr !important;}
+  .proj .thumb,.proj .content{grid-column:1/-1 !important;grid-row:auto !important;}
+  .proj .content{justify-self:stretch !important;text-align:left !important;}
+  .proj .content .card{margin:12px 0 0 0 !important;max-width:100% !important;}
 }
-.ai-polish-btn:hover { transform: scale(1.05); }
-.ai-polish-btn:disabled { opacity: 0.6; cursor: wait; }
-.ai-polish-btn svg { width: 14px; height: 14px; }
+
+/* Experience tabs on mobile (horizontal scroll) */
+@media (max-width:760px){
+  .tabs{grid-template-columns:1fr !important;}
+  .tablist{flex-direction:row !important;overflow-x:auto;border-left:0;border-bottom:1px solid rgba(255,255,255,.08);gap:0}
+  .tablist button{border-left:0;border-bottom:2px solid transparent;white-space:nowrap;padding:12px 18px}
+  .tablist button.active{border-bottom-color:var(--accent)}
+}
+
+/* contact social — mobile only (now contains ALL icons incl. IG & FB) */
+.contact-social{display:none}
+@media (max-width:760px){
+  .contact-social{display:flex;justify-content:center;gap:18px;margin-top:24px}
+  .contact-social a,.contact-social span{color:var(--muted);text-decoration:none}
+  .contact-social a:hover,.contact-social span:hover{color:var(--accent)}
+}
 
 /* Chatbot UI */
 #chatbot-btn{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:var(--accent);border-radius:50%;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.5);z-index:900;transition:transform .3s ease}
@@ -427,9 +407,8 @@ footer{margin-top:16px}
         <li><a href="#pricing"><span class="num">04.</span>Services</a></li>
         <li><a href="#testimonials"><span class="num">05.</span>Feedback</a></li>
         <li><a href="#contact"><span class="num">06.</span>Contact</a></li>
+        <li><a class="btn resume" href="Al-Mouayad Shwin.-.CV.pdf" target="_blank" rel="noopener">Resume</a></li>
       </ul>
-      <!-- RESUME BUTTON MOVED HERE TO BE VISIBLE ON DESKTOP -->
-      <a class="resume-desktop" href="Al-Mouayad Shwin.-.CV.pdf" target="_blank" rel="noopener">Resume</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
   </div>
@@ -788,15 +767,7 @@ footer{margin-top:16px}
       <form class="contact" id="contactForm" novalidate>
         <input type="text" name="name" placeholder="Full name *" required/>
         <input type="email" name="email" placeholder="Email address *" required/>
-        
-        <!-- AI Polish Wrapper -->
-        <div style="display:flex;flex-direction:column;position:relative;grid-column:1/-1">
-            <button type="button" class="ai-polish-btn" id="polishBtn" title="Use AI to make your message professional">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
-                <span>AI Polish</span>
-            </button>
-            <textarea name="message" id="msgInput" placeholder="Your message * (Write a rough draft and click ✨ AI Polish to professionalize it)" class="full" required></textarea>
-        </div>
+        <textarea name="message" id="msgInput" placeholder="Your message *" class="full" required></textarea>
 
         <input type="text" name="company" style="display:none"/>
         <input type="text" name="_honey" style="display:none"/>
@@ -882,56 +853,7 @@ document.querySelectorAll('.tablist button').forEach(btn=>{
 });
 
 const form=document.getElementById('contactForm');const out=document.getElementById('formMsg');
-const polishBtn = document.getElementById('polishBtn');
 const msgInput = document.getElementById('msgInput');
-
-// AI Polish Feature
-polishBtn.addEventListener('click', async () => {
-    const originalText = msgInput.value.trim();
-    if (!originalText) {
-        msgInput.focus();
-        return;
-    }
-    if (!apiKey) {
-        alert("AI API Key is missing. Please add it in the code.");
-        return;
-    }
-
-    const btnText = polishBtn.querySelector('span');
-    const originalBtnText = btnText.textContent;
-    
-    // UI Loading State
-    polishBtn.disabled = true;
-    btnText.textContent = "Polishing...";
-    
-    try {
-        const prompt = `Rewrite the following message to be more professional, concise, and polite for a business inquiry sent to a software engineer. Keep the core meaning but make it sound improved. Message: "${originalText}"`;
-        
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }]
-            })
-        });
-
-        if (!response.ok) throw new Error('API Error');
-        const data = await response.json();
-        const polished = data.candidates[0].content.parts[0].text;
-        
-        // Update Textarea with typing effect
-        msgInput.value = polished.trim();
-        msgInput.classList.add('flash'); 
-        setTimeout(() => msgInput.classList.remove('flash'), 500);
-        
-    } catch (error) {
-        console.error("AI Error:", error);
-        alert("Could not connect to AI. Please try again.");
-    } finally {
-        polishBtn.disabled = false;
-        btnText.textContent = originalBtnText;
-    }
-});
 
 form?.addEventListener('submit',async(e)=>{
   e.preventDefault();
