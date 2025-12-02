@@ -17,7 +17,7 @@ href='data:image/svg+xml;utf8,
 </svg>'/>
 
 <style>
-/* --- Font Faces (Original) --- */
+/* --- Font Faces --- */
 @font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-Regular.woff2') format('woff2'),url('fonts/Calibre/Calibre-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-Medium.woff2') format('woff2'),url('fonts/Calibre/Calibre-Medium.woff') format('woff');font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:'Calibre';src:url('fonts/Calibre/Calibre-Semibold.woff2') format('woff2'),url('fonts/Calibre/Calibre-Semibold.woff') format('woff');font-weight:600;font-style:normal;font-display:swap}
@@ -140,7 +140,7 @@ photo::after{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px
 .content h3{margin:0 0 4px;color:var(--title)}
 .content .card{background:rgba(17,34,64,.92);border-radius:var(--radius);padding:20px 22px;border:1px solid rgba(255,255,255,.08);color:var(--muted);box-shadow:var(--shadow);backdrop-filter:saturate(1.1);max-width:540px}
 
-/* Enhanced Project Meta (New) */
+/* Enhanced Project Meta (With Flags) */
 .proj-status-bar{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
 .status-pill{font-family:var(--mono);font-size:12px;background:rgba(100,255,218,0.1);color:var(--accent);padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:6px;border:1px solid rgba(100,255,218,0.2)}
 .status-pill.location{background:rgba(255,255,255,0.05);color:var(--title);border-color:rgba(255,255,255,0.1)}
@@ -148,7 +148,7 @@ photo::after{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px
 .tech{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
 .tech span{color:var(--muted);font-weight:800}
 
-/* App Store Buttons (New) */
+/* Store Buttons */
 .store-links{display:flex;gap:10px;margin-top:16px}
 .store-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--muted);border-radius:4px;color:var(--title);font-size:12px;font-weight:700;text-decoration:none;transition:all .2s ease}
 .store-btn svg{width:16px;height:16px;fill:currentColor}
@@ -160,7 +160,7 @@ photo::after{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px
 .proj:nth-child(even) .thumb{grid-column:1/9}
 .proj:nth-child(even) .content{grid-column:9/13;justify-self:end;text-align:right}
 .proj:nth-child(even) .content .card{margin-left:-200px}
-/* Fix alignment for pills and store buttons based on odd/even */
+/* Align meta/store buttons based on side */
 .proj:nth-child(odd) .proj-status-bar, .proj:nth-child(odd) .store-links{justify-content:flex-start}
 .proj:nth-child(even) .proj-status-bar, .proj:nth-child(even) .store-links{justify-content:flex-end}
 
@@ -173,7 +173,7 @@ photo::after{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px
   .proj:nth-child(even) .proj-status-bar, .proj:nth-child(even) .store-links{justify-content:flex-start}
 }
 
-/* Pricing Section (New) */
+/* Pricing Section */
 #pricing{padding-top:140px}
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
 @media (max-width:800px){.price-grid{grid-template-columns:1fr}}
@@ -212,36 +212,14 @@ form.contact .full{grid-column:1/-1}
 input,textarea{background:#0c2244;border:1px solid rgba(255,255,255,.1);color:var(--text);border-radius:var(--radius);padding:12px 14px;outline:none}
 input:focus,textarea:focus{border-color:var(--accent)}
 textarea{min-height:160px;resize:vertical}
-/* AI Polish Button Style */
-.ai-polish-btn {
-    background: linear-gradient(135deg, #64ffda 0%, #48c9b0 100%);
-    border: none;
-    border-radius: 4px;
-    padding: 6px 12px;
-    font-size: 11px;
-    font-weight: 700;
-    color: #0a192f;
-    cursor: pointer;
-    margin-bottom: 8px;
-    align-self: flex-end;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: transform 0.2s, opacity 0.2s;
-    font-family: var(--mono);
-}
-.ai-polish-btn:hover { transform: scale(1.05); }
-.ai-polish-btn:disabled { opacity: 0.6; cursor: wait; }
-.ai-polish-btn svg { width: 14px; height: 14px; }
 
-/* Typing Indicator */
-.typing { display: flex; gap: 4px; padding: 12px !important; }
-.dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
-.dot:nth-child(1) { animation-delay: -0.32s; }
-.dot:nth-child(2) { animation-delay: -0.16s; }
-@keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
+/* Restored Fancy Send Button */
+.btn-accent{position:relative;justify-self:center;margin-top:8px;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:12px 22px;border-radius:8px;font-weight:900;cursor:pointer;grid-column:1/-1}
+.btn-accent::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--accent);opacity:.18;transform:translate(8px,8px);z-index:-1;transition:transform .2s ease,opacity .2s ease}
+.btn-accent:hover{color:#0a192f;background:var(--accent)}
+.btn-accent:hover::after{transform:translate(10px,10px);opacity:.26}
 
-#formMsg{min-height:22px}
+#formMsg{min-height:22px;grid-column:1/-1;text-align:center}
 .success{color:var(--accent);font-weight:900}
 
 /* Footer */
@@ -336,7 +314,30 @@ body.nav-open .drawer{transform:translateX(0)}
   .contact-social a:hover,.contact-social span:hover{color:var(--accent)}
 }
 
-/* Chatbot Styles (New) */
+/* AI Polish Button */
+.ai-polish-btn {
+    background: linear-gradient(135deg, #64ffda 0%, #48c9b0 100%);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0a192f;
+    cursor: pointer;
+    margin-bottom: 8px;
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s, opacity 0.2s;
+    font-family: var(--mono);
+    grid-column: 1/-1;
+}
+.ai-polish-btn:hover { transform: scale(1.05); }
+.ai-polish-btn:disabled { opacity: 0.6; cursor: wait; }
+.ai-polish-btn svg { width: 14px; height: 14px; }
+
+/* Chatbot UI */
 #chatbot-btn{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:var(--accent);border-radius:50%;display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,0.5);z-index:900;transition:transform .3s ease}
 #chatbot-btn:hover{transform:scale(1.1)}
 #chatbot-btn svg{width:28px;height:28px;fill:#0a192f}
@@ -351,9 +352,10 @@ body.nav-open .drawer{transform:translateX(0)}
 .chat-input{padding:10px;border-top:1px solid rgba(255,255,255,0.1);display:flex;gap:8px}
 .chat-input input{flex:1;background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:8px 12px;font-size:13px;color:var(--text)}
 .chat-input button{background:transparent;border:none;color:var(--accent);cursor:pointer;padding:4px}
-@media (max-width:480px){
-  #chat-window{width:calc(100vw - 48px);right:24px;bottom:90px;height:400px}
-}
+.typing { display: flex; gap: 4px; padding: 12px !important; }
+.dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: bounce 1.4s infinite ease-in-out both; }
+.dot:nth-child(1) { animation-delay: -0.32s; } .dot:nth-child(2) { animation-delay: -0.16s; }
+@keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
 
 footer{margin-top:16px}
 </style>
@@ -563,7 +565,7 @@ footer{margin-top:16px}
           <div class="store-links">
             <a href="#" class="store-btn"><svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.68-.83 1.14-1.99 1.01-3.15-1.02.04-2.26.68-3 1.54-.64.73-1.2 1.91-1.05 3.08 1.14.09 2.3-.58 3.04-1.47"/></svg> App Store</a>
             <a href="#" class="store-btn"><svg viewBox="0 0 24 24"><path d="M3,20.5V3.5C3,2.91,3.34,2.39,3.84,2.15L13.69,12L3.84,21.85C3.34,21.6,3,21.09,3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08,20.75,11.5,20.75,12C20.75,12.5,20.5,12.92,20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg> Google Play</a>
-            <a href="#" class="store-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg> Web</a>
+            <a href="#" class="store-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Web</a>
           </div>
         </div>
       </article>
@@ -669,6 +671,45 @@ footer{margin-top:16px}
         </div>
       </article>
       
+      <!-- Existing: Card Management -->
+      <article class="proj">
+        <a class="thumb" href="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/image.png" target="_blank" rel="noopener">
+          <img loading="lazy" alt="Card Management Platform" src="https://raw.githubusercontent.com/mdshwin555/almouayad-portfolio/refs/heads/main/image.png"/>
+        </a>
+        <div class="content">
+          <div class="eyebrow">Featured Project</div>
+          <h3>Card Management Platform</h3>
+          <div class="card">ATM availability dashboards with live maps and monitoring for card services across branches.</div>
+          <div class="tech"><span>REST</span><span>Maps</span><span>React.js</span><span>Laravel</span></div>
+        </div>
+      </article>
+
+      <!-- Existing: MedTeam -->
+      <article class="proj">
+        <a class="thumb" href="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation%20(1).png?raw=true" target="_blank" rel="noopener">
+          <img loading="lazy" alt="MedTeam" src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation%20(1).png?raw=true"/>
+        </a>
+        <div class="content">
+          <div class="eyebrow">Featured Project</div>
+          <h3>MedTeam</h3>
+          <div class="card">Mobile & admin for medical teams: authentication, scheduling, and media uploads.</div>
+          <div class="tech"><span>Flutter</span><span>Laravel/Filament</span><span>Figma</span></div>
+        </div>
+      </article>
+
+      <!-- Existing: HADERINE -->
+      <article class="proj">
+        <a class="thumb" href="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation.png?raw=true" target="_blank" rel="noopener">
+          <img loading="lazy" alt="HADERINE" src="https://github.com/mdshwin555/almouayad-portfolio/blob/main/Blue%20Modern%20Mobile%20Application%20Presentation.png?raw=true"/>
+        </a>
+        <div class="content">
+          <div class="eyebrow">Featured Project</div>
+          <h3>HADERINE</h3>
+          <div class="card">On-demand services platform: RBAC, requests, chat/calls, and notifications.</div>
+          <div class="tech"><span>Flutter</span><span>React.js</span><span>MySQL</span><span>Laravel</span></div>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -750,7 +791,7 @@ footer{margin-top:16px}
         <input type="email" name="email" placeholder="Email address *" required/>
         
         <!-- AI Polish Wrapper -->
-        <div style="display:flex;flex-direction:column;position:relative">
+        <div style="display:flex;flex-direction:column;position:relative;grid-column:1/-1">
             <button type="button" class="ai-polish-btn" id="polishBtn" title="Use AI to make your message professional">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
                 <span>AI Polish</span>
@@ -823,7 +864,10 @@ footer{margin-top:16px}
 </div>
 
 <script>
-const apiKey = ""; // API Key provided by environment at runtime
+// IMPORTANT: TO MAKE AI FEATURES WORK ON GITHUB/VERCEL:
+// 1. Get a free API Key from https://aistudio.google.com/
+// 2. Paste it below inside the quotes.
+const apiKey = "AIzaSyBhzMhdCci24bOqHmP2iSCTrq49lAc9yS0"; 
 
 window.addEventListener('load',()=>setTimeout(()=>{const s=document.getElementById('splash');s.style.opacity='0';setTimeout(()=>s.remove(),420);},900));
 function setVH(){document.documentElement.style.setProperty('--vh',(window.innerHeight*0.01)+'px');}
@@ -838,9 +882,7 @@ document.querySelectorAll('.tablist button').forEach(btn=>{
   });
 });
 
-/* --- Contact Form & AI Polish --- */
-const form=document.getElementById('contactForm');
-const out=document.getElementById('formMsg');
+const form=document.getElementById('contactForm');const out=document.getElementById('formMsg');
 const polishBtn = document.getElementById('polishBtn');
 const msgInput = document.getElementById('msgInput');
 
@@ -849,6 +891,10 @@ polishBtn.addEventListener('click', async () => {
     const originalText = msgInput.value.trim();
     if (!originalText) {
         msgInput.focus();
+        return;
+    }
+    if (!apiKey) {
+        alert("AI API Key is missing. Please add it in the code.");
         return;
     }
 
@@ -876,12 +922,12 @@ polishBtn.addEventListener('click', async () => {
         
         // Update Textarea with typing effect
         msgInput.value = polished.trim();
-        msgInput.classList.add('flash'); // You can add a CSS flash animation if desired
+        msgInput.classList.add('flash'); 
         setTimeout(() => msgInput.classList.remove('flash'), 500);
         
     } catch (error) {
         console.error("AI Error:", error);
-        out.textContent = "Could not connect to AI. Please try again.";
+        alert("Could not connect to AI. Please try again.");
     } finally {
         polishBtn.disabled = false;
         btnText.textContent = originalBtnText;
@@ -960,6 +1006,10 @@ function addMessage(text, sender) {
 }
 
 async function callGeminiAPI(userMsg) {
+    if (!apiKey) {
+        addMessage("Please configure the API Key in the code to enable AI.", 'bot');
+        return;
+    }
     // Show typing indicator
     const typingDiv = document.createElement('div');
     typingDiv.className = 'msg bot typing';
@@ -1051,19 +1101,19 @@ userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSen
 
     const text = `🟢 Visit: ${info.page}\nUA: ${info.ua}\nIP: ${info.ip}`;
 
-    // 1) Try POST (no-cors)
+    // Try POST first (Reliable)
+    // If it FAILS, try GET image fallback
+    // This prevents double sending
     const fd = new FormData();
     fd.append('chat_id', TG_CHAT_ID);
     fd.append('text', text);
 
     try {
       await fetch(`${base}/sendMessage`, { method:'POST', mode:'no-cors', body: fd, keepalive:true });
-    } catch {}
-    
-    // 2) Fallback Image GET
-    try {
+    } catch (err) {
+      // Fallback Image GET only if fetch failed
       new Image().src = `${base}/sendMessage?chat_id=${encodeURIComponent(TG_CHAT_ID)}&text=${encodeURIComponent(text)}`;
-    } catch {}
+    }
 
   } catch (e) {}
 })();
