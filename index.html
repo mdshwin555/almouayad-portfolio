@@ -1197,7 +1197,7 @@
         margin-top: 16px;
       }
 
-         /* Floating Chat Button + Widget */
+      /* Floating Chat Button + Widget */
       .chat-launcher {
         position: fixed;
         right: 24px;
@@ -1343,9 +1343,6 @@
           bottom: 16px;
         }
       }
-
-
-
     </style>
   </head>
   <body>
@@ -1833,10 +1830,7 @@
 
           <article class="proj" data-category="mobile">
             <div class="thumb">
-              <img
-                src="Kwickly-app.png"
-                alt="Kwickly"
-              />
+              <img src="Kwickly-app.png" alt="Kwickly" />
             </div>
             <div class="content">
               <div class="proj-header">
@@ -2332,8 +2326,7 @@
       </section>
     </main>
 
-
-        <!-- Floating Chat Assistant -->
+    <!-- Floating Chat Assistant -->
     <button
       class="chat-launcher"
       id="chat-toggle"
@@ -2376,7 +2369,6 @@
         </form>
       </div>
     </div>
-
 
     <footer class="wrap">
       Designed &amp; Built by Al-Mouayad Shwin • © 2025
@@ -2597,8 +2589,7 @@
         });
       }
 
-
-            /* =======================
+      /* =======================
          💬 Simple Portfolio Chat Assistant
       ======================= */
       (function initPortfolioChat() {
@@ -2639,128 +2630,46 @@
           chatWidget.setAttribute("aria-hidden", "true");
         }
 
-      // ⚠️ تحذير مهم:
-      // هذا الكود يعرّض API KEY تبعك لأي شخص يفتح الصفحة ويشوف Network/Source.
-      // استخدمه للتجارب بس، ولا تستخدم نفس الكي لمشاريع إنتاجية.
-      const GEMINI_API_KEY = "AIzaSyBToiNMiRhdeg8_KmUiEQxterxWLrw43Zg";
+        const OPENAI_API_KEY = "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";
 
-      async function generateReply(msg) {
-        // سياق ثابت عن البورتفوليو تبعك (عشان يجاوب بناءً عليه قدر الإمكان)
-        const systemPrompt = `
-You are an AI assistant embedded inside the personal portfolio website of "Al-Mouayad Shwin" (Software Engineer).
-You must answer ONLY based on this information:
+        async function generateReply(msg) {
+          const systemPrompt =
+            "You are a portfolio assistant for Al-Mouayad Shwin. Answer only about his skills, experience, and projects, based on the portfolio description that the developer embedded in you.";
 
-- Name: Al-Mouayad Shwin
-- Role: Software Engineer (Laravel, React, Flutter)
+          try {
+            const res = await fetch(
+              "https://api.openai.com/v1/chat/completions",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + OPENAI_API_KEY,
+                },
+                body: JSON.stringify({
+                  model: "gpt-4.1-mini",
+                  messages: [
+                    { role: "system", content: systemPrompt },
+                    { role: "user", content: msg },
+                  ],
+                }),
+              }
+            );
 
-Tech stack:
-- Backend: Laravel, Filament, REST APIs, microservices, Redis, JWT, MySQL/SQL Server
-- Frontend: React.js, TypeScript
-- Mobile: Flutter (Dart)
-- Tools: Docker, CI/CD
-
-Experience:
-- Freelance Software Engineer @ Mostaql
-  • Built Kwickly (logistics/cargo app for Jordan).
-  • Built Sedra Fatima (booking platform for venues & chalets in Saudi Arabia).
-  • Built Waselni (ride-hailing app in Algeria).
-- Full-Stack Developer @ Damascus Governorate
-  • Building v2 of the official mobile app.
-  • Building the main web portal.
-- Software Engineer @ National Islamic Bank (Jun 2024 – Jul 2025)
-  • Laravel microservices, payment gateways (Fatora, Sham Cash), webhooks.
-  • Improved performance with caching and query tuning.
-  • Filament dashboards and shareholder e-voting.
-  • Built Digital Account Opening (account.nib.com.sy) and Card Management Platform (cards.nib.com.sy).
-
-Projects (from "Work" section):
-1) Crown Team (Mobile App, Syria)
-   - Flutter + Laravel + FCM.
-   - Courses, student tracking, event updates.
-2) Wasena (Food Delivery, Syria)
-   - Restaurants, juices, shawarma.
-   - Full ordering workflow, real-time status, delivery tracking.
-   - Flutter + Maps API + Laravel. App is on Google Play.
-3) Kwickly (Logistics, Jordan)
-   - Cargo shipping and logistics.
-   - Real-time shipment tracking, WebSocket notifications, driver assignment.
-4) Waselni (Ride Hailing, Algeria)
-   - Uber-like taxi app.
-   - User app + UI/UX complete; working on driver logic + admin dashboard.
-5) Baladity (Government)
-   - Citizens report public issues (waste, lighting, water).
-   - Pin location, upload photos.
-   - Real-time statuses, before/after evidence, region hotlines.
-6) Milestone Institute (Education)
-   - Educational platform.
-   - Course display, attendance tracking, homework submission, event management.
-7) Digital Account Opening (NIB)
-   - Secure onboarding, 2000+ accounts opened.
-   - Laravel + React, JWT.
-8) Card Management Platform (NIB)
-   - View card details, block/unblock, change PIN, request new cards.
-   - React.js + secure APIs + encryption.
-9) Generator Management System (SaaS Dashboard)
-   - ERP for generator offices.
-   - Bulk invoicing, Excel import/export, automated consumption logic, RBAC.
-
-Contact:
-- Email: eng.almouayad.shwin@gmail.com
-- GitHub: github.com/mdshwin555
-- LinkedIn: linkedin.com/in/al-mouayad-shwin
-- WhatsApp link exists in the portfolio.
-
-Rules:
-- Always answer as if you are a portfolio assistant for Al-Mouayad.
-- If the question is unrelated to this portfolio or outside these details, say that you can only answer questions about Al-Mouayad’s skills, experience, or projects.
-- Be concise and friendly.
-`;
-
-        try {
-          const res = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" +
-              GEMINI_API_KEY,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                contents: [
-                  {
-                    role: "user",
-                    parts: [
-                      {
-                        text:
-                          systemPrompt +
-                          "\n\nUser question: " +
-                          msg +
-                          "\n\nAnswer in English, short and clear.",
-                      },
-                    ],
-                  },
-                ],
-              }),
+            if (!res.ok) {
+              console.error("OpenAI error:", await res.text());
+              throw new Error("Bad response");
             }
-          );
 
-          if (!res.ok) {
-            console.error("Gemini error:", await res.text());
-            throw new Error("Bad response");
+            const data = await res.json();
+            return (
+              data.choices?.[0]?.message?.content ??
+              "Sorry, I couldn’t generate a response."
+            );
+          } catch (e) {
+            console.error(e);
+            return "There was an error contacting the assistant API. Please try again later.";
           }
-
-          const data = await res.json();
-          const text =
-            data?.candidates?.[0]?.content?.parts?.[0]?.text ??
-            "Sorry, I couldn’t generate a response.";
-
-          return text;
-        } catch (e) {
-          console.error(e);
-          return "There was an error contacting the assistant API. Please try again later.";
         }
-      }
-
 
         chatBtn.addEventListener("click", () => {
           if (chatWidget.classList.contains("open")) {
@@ -2784,7 +2693,6 @@ Rules:
           }, 300);
         });
       })();
-
     </script>
   </body>
 </html>
