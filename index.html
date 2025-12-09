@@ -719,7 +719,7 @@
 
       /* Contact */
       #contact {
-        padding-top: 180px;
+        padding-top: 40px;
       }
       .cta-center {
         text-align: center;
@@ -1196,6 +1196,124 @@
       footer {
         margin-top: 16px;
       }
+
+
+       /* Stats Section */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        text-align: center;
+        background: var(--card);
+        padding: 30px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: var(--shadow);
+      }
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .stat-number {
+        font-family: var(--mono);
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: baseline;
+      }
+      .stat-label {
+        font-family: var(--font);
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* استجابة للجوال */
+      @media (max-width: 760px) {
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 30px;
+        }
+      }
+
+
+
+      /* FAQ Section */
+
+      #faq {
+        padding-top: 100px;
+        padding-bottom: 10px;
+      }
+
+      .faq-container {
+        max-width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      details {
+        background: var(--card);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: all 0.25s ease;
+      }
+      details[open] {
+        border-color: var(--accent);
+        box-shadow: var(--shadow);
+      }
+      summary {
+        padding: 20px 24px;
+        cursor: pointer;
+        font-weight: 700;
+        color: var(--title);
+        list-style: none; /* إخفاء المثلث الافتراضي */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: color 0.2s;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary:hover {
+        color: var(--accent);
+      }
+      summary:after {
+        content: "+";
+        font-family: var(--mono);
+        color: var(--accent);
+        font-size: 20px;
+        font-weight: 400;
+        transition: transform 0.2s ease;
+      }
+      details[open] summary:after {
+        content: "-";
+        transform: rotate(180deg);
+      }
+      .faq-answer {
+        padding: 0 24px 24px 24px;
+        color: var(--muted);
+        line-height: 1.6;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .faq-answer strong {
+        color: var(--accent);
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+
     </style>
   </head>
   <body>
@@ -1418,36 +1536,68 @@
       </section>
 
       <section class="wrap" id="about">
-  <div class="sec-title">
-    <span class="num">01.</span>
-    <h2>About Me</h2>
-    <div style="flex: 1; height: 1px; background: #233554"></div>
-  </div>
-  <div class="about">
-    <div>
-      <p>
-        I’m a software engineer who enjoys building things that live on the
-        internet from banking backends and secure APIs to modern dashboards and
-        mobile apps. Recently I’ve been focused on <b>Laravel/Filament</b> admin
-        panels, <b>React</b> front-ends, and <b>Flutter</b> delivery apps.
-      </p>
-      <p>Here are a few technologies I’ve been working with recently:</p>
-      <ul class="list">
-        <li>Laravel (PHP), REST APIs</li>
-        <li>React.js, TypeScript</li>
-        <li>Flutter (Bloc, GetX)</li>
-        <li>MySQL, SQL Server, Firebase</li>
-        <li>UI/UX, Figma</li>
-        <li>CI/CD, Docker</li>
-      </ul>
-    </div>
-    <div>
-      <div class="photo">
-        <img src="profile.jpg" alt="Profile" />
+        <div class="sec-title">
+          <span class="num">01.</span>
+          <h2>About Me</h2>
+          <div style="flex: 1; height: 1px; background: #233554"></div>
+        </div>
+        <div class="about">
+          <div>
+            <p>
+              I’m a software engineer who enjoys building things that live on
+              the internet from banking backends and secure APIs to modern
+              dashboards and mobile apps. Recently I’ve been focused on
+              <b>Laravel/Filament</b> admin panels, <b>React</b> front-ends, and
+              <b>Flutter</b> delivery apps.
+            </p>
+            <p>Here are a few technologies I’ve been working with recently:</p>
+            <ul class="list">
+              <li>Laravel (PHP), REST APIs</li>
+              <li>React.js, TypeScript</li>
+              <li>Flutter (Bloc, GetX)</li>
+              <li>MySQL, SQL Server, Firebase</li>
+              <li>UI/UX, Figma</li>
+              <li>CI/CD, Docker</li>
+            </ul>
+          </div>
+          <div>
+            <div class="photo">
+              <img src="profile.jpg" alt="Profile" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+        <section class="wrap" id="stats" style="padding: 40px 0;">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">
+            +<span class="counter" data-target="3">0</span>
+          </div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">
+            +<span class="counter" data-target="10">0</span>
+          </div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">
+            +<span class="counter" data-target="5">0</span>
+          </div>
+          <div class="stat-label">Countries Served</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">
+            <span class="counter" data-target="100">0</span>%
+          </div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+    <section class="wrap" id="experience">
 
       <section class="wrap" id="experience">
         <div class="sec-title">
@@ -2056,11 +2206,58 @@
         </div>
       </section>
 
+
+    <section class="wrap" id="faq">
+      <div class="sec-title">
+        <span class="num">05.</span> <h2>Frequently Asked Questions</h2>
+        <div style="flex: 1; height: 1px; background: #233554"></div>
+      </div>
+
+      <div class="faq-container">
+        <details open>
+          <summary>Do you provide support after delivery?</summary>
+          <div class="faq-answer">
+            <p>
+              Yes, absolutely. I provide a <strong>free 30-day support period</strong> after delivery to ensure everything runs smoothly and to fix any potential bugs. After that, I offer flexible maintenance packages for long-term updates and feature additions.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Do I get the full source code?</summary>
+          <div class="faq-answer">
+            <p>
+              Yes. Once the project is completed and fully paid for, you receive <strong>100% ownership</strong> of the source code (GitHub repo) and all intellectual property rights. You are free to modify or scale it in the future.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How long does a typical project take?</summary>
+          <div class="faq-answer">
+            <p>
+              It depends on the scope. A standard mobile app or website usually takes <strong>3 to 6 weeks</strong>. Complex platforms with custom backend and admin panels may take <strong>8+ weeks</strong>. I will provide a detailed timeline breakdown before we start.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Do you work with existing teams?</summary>
+          <div class="faq-answer">
+            <p>
+              Yes! I have experience using Git, Jira, and Docker, making it easy to integrate with your existing backend or frontend team to accelerate development.
+            </p>
+          </div>
+        </details>
+      </div>
+    </section>
+    <section class="wrap" id="contact">
+
       <section class="wrap" id="contact">
         <div class="cta-center">
           <p class="kicker">
             <span class="num" style="color: var(--accent); font-weight: 900"
-              >05.</span
+              >06.</span
             >
             What’s Next?
           </p>
@@ -2410,6 +2607,46 @@
           }
         });
       }
+
+
+
+      /* Stats Counter Animation */
+      const statsSection = document.getElementById("stats");
+      const counters = document.querySelectorAll(".counter");
+      let started = false; // للتأكد أن الانيميشن يعمل مرة واحدة فقط
+
+      const startCount = (el) => {
+        const target = +el.getAttribute("data-target");
+        const duration = 2000; // مدة الانيميشن (2 ثانية)
+        const increment = target / (duration / 16); // 60 FPS roughly
+
+        let current = 0;
+        const updateCount = () => {
+          current += increment;
+          if (current < target) {
+            el.innerText = Math.ceil(current);
+            requestAnimationFrame(updateCount);
+          } else {
+            el.innerText = target;
+          }
+        };
+        updateCount();
+      };
+
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting && !started) {
+            counters.forEach((counter) => startCount(counter));
+            started = true;
+          }
+        },
+        { threshold: 0.5 } // يبدأ عندما يظهر 50% من القسم
+      );
+
+      if (statsSection) {
+        statsObserver.observe(statsSection);
+      }
+
     </script>
   </body>
 </html>
