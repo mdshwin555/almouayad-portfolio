@@ -1314,6 +1314,50 @@
       }
 
 
+      .skills-wrapper {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.skill-box {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.skill-box img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skill-box:hover img {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 15px rgba(100, 255, 218, 0.7));
+}
+
+.skill-box span {
+  display: block;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.skill-box img, .skill-box span {
+  transition: transform 0.2s ease;
+}
+
+.skill-box:hover span {
+  transform: translateY(-5px);
+}
+
+
     </style>
   </head>
   <body>
@@ -1551,14 +1595,72 @@
               <b>Flutter</b> delivery apps.
             </p>
             <p>Here are a few technologies I’ve been working with recently:</p>
-            <ul class="list">
-              <li>Laravel (PHP), REST APIs</li>
-              <li>React.js, TypeScript</li>
-              <li>Flutter (Bloc, GetX)</li>
-              <li>MySQL, SQL Server, Firebase</li>
-              <li>UI/UX, Figma</li>
-              <li>CI/CD, Docker</li>
-            </ul>
+
+          <div class="skills-wrapper">
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" />
+              <span>Flutter</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart" />
+              <span>Dart</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" />
+              <span>Firebase</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" />
+              <span>Android</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" />
+              <span>React</span>
+            </div>
+           
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" />
+              <span>Figma</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" />
+              <span>VS Code</span>
+            </div>
+
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" alt="Laravel" />
+              <span>Laravel</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" />
+              <span>PHP</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+              <span>MySQL</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
+              <span>Docker</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
+              <span>Linux</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+              <span>Git</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter: invert(1);" />
+              <span>GitHub</span>
+            </div>
+            <div class="skill-box">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman" />
+              <span>Postman</span>
+            </div>
+          </div>
+
           </div>
           <div>
             <div class="photo">
@@ -1794,7 +1896,7 @@
 
               <div
                 class="card"
-                style="width: 500px; margin-left: auto; text-align: right"
+                style="width: 425px; margin-left: auto; text-align: right"
               >
                 Food delivery app for restaurants, juices, and shawarma in
                 Syria. Full ordering workflow, real-time status, and delivery
@@ -1852,7 +1954,7 @@
                 />
                 Kwickly
               </h3>
-              <div class="card">
+              <div class="card" style="width: 500px">
                 Cargo shipping and logistics app for the Jordanian market.
                 Features real-time shipment tracking, WebSocket notifications,
                 and driver assignment.
@@ -1908,7 +2010,7 @@
 
               <div
                 class="card"
-                style="width: 500px; margin-left: auto; text-align: right"
+                style="width: 450px; margin-left: auto; text-align: right"
               >
                 Uber-like taxi booking app for Algeria. User mobile app and
                 UI/UX are complete. Currently implementing driver logic and
@@ -1950,7 +2052,7 @@
                 Baladity
               </h3>
 
-              <div class="card">
+              <div class="card" style="width: 450px">
                 Citizens can report public issues (waste, lighting, water) by
                 pinning locations and uploading photos. Includes real-time
                 status updates with <strong>"before/after"</strong> evidence and
@@ -1995,7 +2097,7 @@
 
               <div
                 class="card"
-                style="width: 500px; margin-left: auto; text-align: right"
+                style="width: 450px; margin-left: auto; text-align: right"
               >
                 Educational platform for course display, online attendance
                 tracking, homework submission, and event management.
